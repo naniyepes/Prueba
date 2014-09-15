@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-may-2014 11:58:30 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="com.proint1.udea.actividad.entidades.TipoActividad"
+  schema="PROINT1" table="TB_ACT_TIPO_ACTIVIDAD">
+  <id name="nbTacIdn" type="long">
+   <column name="NB_TAC_IDN" precision="10" scale="0"/>
+   <generator class="identity"/>
+  </id>
+  <property generated="never" lazy="false" name="nombre" type="string">
+   <column length="100" name="VR_TAC_NOMBRE" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="descripcion" type="string">
+   <column name="VR_TAC_DESCRIPCION" not-null="true"/>
+  </property>
+ </class>
+</hibernate-mapping>

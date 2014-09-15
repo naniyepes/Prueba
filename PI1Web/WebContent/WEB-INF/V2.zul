@@ -1,0 +1,6 @@
+<?page title="V1" contentType="text/html;charset=UTF-8"?>
+<zk>
+ <window title="ventana 1" border="normal">
+   CONTENIDO 1
+ </window>
+</zk>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+<joined-subclass name="com.proint1.udea.administracion.entidades.seguridad.Usuario" table="TB_ADM_USUARIO" extends="com.proint1.udea.administracion.entidades.terceros.Persona">
+  <key column="NB_USU_IDN" />
+        
+        <property name="login" type="string">
+            <column name="VR_USU_LOGIN" length="50" not-null="true" />
+        </property>
+        <property name="activo" type="boolean">
+            <column name="NB_USU_ACTIVO" precision="10" scale="0" not-null="true" />
+        </property>
+   </joined-subclass>
+</hibernate-mapping>

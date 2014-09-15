@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="PI1Web">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="Dominio.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Dominio/Dominio">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Actividad.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Actividad/Actividad">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Administracion.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Administracion/Administracion">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="PI1Web"/>
+        <property name="java-output-path" value="/PI1Web/bin"/>
+    </wb-module>
+</project-modules>

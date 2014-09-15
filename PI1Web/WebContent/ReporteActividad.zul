@@ -1,0 +1,59 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+	<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
+<zk>
+	
+</zk>
+<window border="none" title="">
+	<div align="center" top="10" height="80" width="60">
+		<combobox>
+			<comboitem label="dfdf"></comboitem>
+			<comboitem label="dfdfd"></comboitem>
+		</combobox>
+		<decimalbox value="0" width="20"></decimalbox>
+		<doublebox value="0" width="20"></doublebox>
+		<textbox width="20" value="55"></textbox>
+	</div>
+	<bandbox>
+		<bandpopup></bandpopup>
+	</bandbox>
+	<div width="60" align="center" height="80" visible="true">
+		<grid>
+			<columns>
+				<column label="Type" width="150px" />
+				<column label="Content" />
+			</columns>
+			<rows>
+				<row>
+					<label value="UserName" width="150px" />
+					<textbox value="Jerry" width="150px" />
+				</row>
+				<row>
+					Password
+					<textbox type="password" value="123456789" width="150px" />
+				</row>
+				<row>
+					Re-type Password
+					<textbox type="password" value="123456789" width="150px" />
+				</row>
+				<row>
+					Re-type Password
+					<textbox type="password" value="123456789" width="150px" />
+				</row>
+				<row>
+					Re-type Password
+					<textbox type="password" value="123456789" width="150px" />
+				</row>
+				<row>
+					Re-type Password
+					<textbox type="password" value="123456789" width="150px" />
+				</row>
+				<row>
+					Re-type Password
+					<textbox type="password" value="123456789" width="150px" />
+				</row>
+			</rows>
+		</grid>
+	</div>
+   
+	</window>
+

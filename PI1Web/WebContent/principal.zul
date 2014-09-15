@@ -1,0 +1,53 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?page title="Ingeniería de Sistemas" contentType="text/html;charset=UTF-8"?>
+<zk>
+<style src="style/style.css"/>
+<div  apply="org.zkoss.bind.BindComposer" viewModel="@id('vmp') @init('com.proint1.udea.administracion.ctl.PrincipalCtl')">
+	<borderlayout height="780px">
+	
+		<north size="180px" >
+			<div zclass="banner" >
+
+			    <div align="right" zclass="imgBanner">
+			    	<toolbar >
+			    		<textbox id="nombreUsuario" width="150px" value="Usuario:"  disabled="true" ></textbox>
+			    	</toolbar>
+			    </div>
+			    <div align="center" zclass="imgBanner">
+					<image  src="/img/h_udea_3.jpg"></image>
+				</div>
+				
+				<div>
+					<include id="listMenu" src="/widgets/menu/menu_orientation_hor.zul" ></include>
+				</div>
+			</div>
+		</north>
+		
+		<center >
+			<tabbox id="tb_tabbox" />
+		</center>
+		
+		<west>
+		</west>
+		
+		 <east size="205px" title="Enlaces" flex="true">
+		 	<div zclass="east">
+		 		<include id="menueast" src="/widgets/menu/menu_vertical_east.zul" ></include>
+		 	</div>
+		 </east>
+		 
+		<south size="80px">
+			<div zclass="footer">
+				<div>
+					<label value="Departamento de Ingeniería de Sistemas - Universidad de Antioquia " />
+				</div>
+				<div>
+					<label value="Medellín - Colombia |Todos los Derechos Reservados © 2014"/>
+				</div>				
+			</div>
+		</south>
+		
+	</borderlayout>
+</div>
+
+</zk>	

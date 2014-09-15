@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-may-2014 11:58:30 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<!-- class apunta al paquete que contiene la entity de curso(.java)-->
+    <class name="com.proint1.udea.administracion.entidades.academico.Curso" table="TB_ADM_CURSO" schema="PROINT1">
+        <id name="idn" type="long">
+            <column name="NB_CUR_IDN" precision="10" scale="0" />
+            <generator class="increment" />
+        </id>      
+        
+        <many-to-one name="dependenciaAcademica" class="com.proint1.udea.administracion.entidades.dependencias.DependenciaAcademica" update="false" insert="false">
+            <column name="NB_DEP_IDN" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        
+        <property name="dependenciaAcademicaIDN" type="long">
+            <column name="NB_DEP_IDN" length="10" not-null="true" />
+        </property>
+        
+        <property name="idCurso" type="string">
+            <column name="VR_CUR_ID" length="10" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="VR_CUR_NOMBRE" length="50" not-null="true" />
+        </property>
+  		<property generated="never" lazy="false" name="usuarioActualizacion" type="string">
+   			<column length="32" name="VR_ADTUSUARIO"/>
+  		</property>
+  		<property generated="never" lazy="false" name="fechaActualizacion" type="date">
+   			<column length="7" name="DT_ADTFECHA"/>
+  		</property>
+    </class>
+</hibernate-mapping>

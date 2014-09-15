@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.proint1.udea.administracion.entidades.dependencias.TipoDependencia" table="TB_ADM_TIPO_DEPENDENCIA">
+        <id name="codigo" type="string">
+            <column name="VR_TDP_CODIGO" length="4" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="VR_TDP_NOMBRE" length="50" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<!--Al momento de cargar la vista busca el controlador dentro de los recursos de Sprint-->
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk>
+	<window title="Administración cursos" border="none" width="1200px" apply="${administrarCursoCtl}">
+		
+
+		<toolbar>
+			<toolbarbutton id="btnCrear" label="Crear" image="/img/agregar.ico"></toolbarbutton>
+			<toolbarbutton id="btnEditar" label="Editar" image="/img/editar.ico"></toolbarbutton>
+			<toolbarbutton id="btnEliminar" label="Eliminar" image="/img/eliminar.ico"></toolbarbutton>
+		</toolbar>
+
+		<listbox id="lsxCurso" mold="paging" pageSize="10">
+			<listhead>
+				<listheader label="ID Curso" width="80px"></listheader>
+				<listheader label="Nombre Curso" width="200px"></listheader>
+				<listheader label="Dependencia" width="200px"></listheader>
+			</listhead>
+
+		</listbox>
+
+	</window>
+</zk>

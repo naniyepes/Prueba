@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.proint1.udea.administracion.entidades.dependencias.DependenciaAcademica" table="TB_ADM_DEPENDENCIA_ACADEMICA">
+        <id name="idn" type="long">
+            <column name="NB_DEP_IDN" precision="10" scale="0" />
+            <generator class="increment" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="VR_DEP_NOMBRE" length="100" not-null="true" />
+        </property>
+        <property name="unidadAcademicaIdn" type="long">
+            <column name="NB_UNI_IDN"  precision="10" scale="0" not-null="true"  />
+        </property>
+        <property name="tipoDependenciaCodigo" type="string">
+            <column name="VR_TDP_CODIGO" length="4" not-null="true" />
+        </property>
+        <property name="dependenciaPadreCodigo" type="long">
+            <column name="NB_DEPPADRE_IDN"  precision="10" scale="0"  />
+        </property>
+
+        <many-to-one name="unidadAcademica" class="com.proint1.udea.administracion.entidades.dependencias.UnidadAcademica" insert="false"  update="false">
+            <column name="NB_UNI_IDN" precision="10" scale="0" />
+        </many-to-one>        
+        <many-to-one name="tipoDependencia" class="com.proint1.udea.administracion.entidades.dependencias.TipoDependencia" insert="false"  update="false">
+            <column name="VR_TDP_CODIGO" length="4"/>
+        </many-to-one>
+        <many-to-one name="dependenciaAcademicaPadre" class="com.proint1.udea.administracion.entidades.dependencias.DependenciaAcademica" insert="false"  update="false">
+            <column name="NB_DEPPADRE_IDN" precision="10" scale="0" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

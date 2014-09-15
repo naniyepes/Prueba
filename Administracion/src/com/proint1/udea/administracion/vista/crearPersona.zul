@@ -1,0 +1,28 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
+<zk>
+<window title="Crear Persona" border="none" width="600px" apply="${crearPersonaCtl}">
+	<grid>
+		<columns>
+			<column />
+			<column />
+		</columns>
+		<rows>
+			<row>
+				<label value="Nombre" width="150px" />
+				<hlayout>
+					<textbox id="txtNombre" width="150px" tabindex="1" />
+				</hlayout>
+			</row>
+			<row>
+				Apellido
+				<textbox id="txtApellido" width="150px" tabindex="2" />
+
+			</row>
+		</rows>
+	</grid>
+
+	<button id="btnAceptar" label="Aceptar"></button>
+
+</window>
+</zk>

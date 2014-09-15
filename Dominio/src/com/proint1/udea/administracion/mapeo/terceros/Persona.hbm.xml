@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class
+  name="com.proint1.udea.administracion.entidades.terceros.Persona" table="TB_ADM_PERSONA">
+  <id name="idn" type="long">
+   <column name="NB_PER_IDN" precision="10" scale="0"/>
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="tipoidentificacionIdn" type="long">
+   <column length="10" name="NB_TID_IDN"/>
+  </property>
+  <property generated="never" lazy="false" name="identificacion" type="string">
+   <column length="48" name="VR_PER_IDENTIFICACION" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="nombres" type="string">
+   <column length="100" name="VR_PER_NOMBRES" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="apellidos" type="string">
+   <column length="100" name="VR_PER_APELLIDOS" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="nombreCompleto" type="string">
+   <column length="200" name="VR_PER_NOMBRECOMPLETO" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="direccion" type="string">
+   <column length="80" name="VR_PER_DIRECCION"/>
+  </property>
+  <property generated="never" lazy="false" name="telefono" type="string">
+   <column length="80" name="VR_PER_TELEFONO"/>
+  </property>
+  <property generated="never" lazy="false" name="email" type="string">
+   <column length="240" name="VR_PER_EMAIL"/>
+  </property>
+  <property generated="never" lazy="false" name="usuarioActualizacion" type="string">
+   <column length="32" name="VR_ADTUSUARIO"/>
+  </property>
+  <property generated="never" lazy="false" name="fechaActualizacion" type="date">
+   <column length="7" name="DT_ADTFECHA"/>
+  </property>
+      
+  <!-- mapeo claves foraneas -->
+  <many-to-one class="com.proint1.udea.administracion.entidades.terceros.TipoIdentificacion" insert="false" name="tipoidentificacion" update="false">
+   <column length="10" name="NB_TID_IDN" not-null="true" precision="10" scale="0" />
+  </many-to-one>
+ </class>
+</hibernate-mapping>

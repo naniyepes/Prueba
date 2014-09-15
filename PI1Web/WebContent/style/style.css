@@ -1,0 +1,22 @@
+.banner, .footer, .east, .west{ background: rgba(9, 59, 4, 0.86);}
+ 
+.banner, .center, .footer, .east, .west{
+	width: 100%;
+ 	height: 100%;
+ }
+ 
+.boby{}
+   
+.banner{}
+ 		  
+.imgBanner{	margin-left: 0;}
+
+.center{}
+
+.east{}
+
+.west{}
+
+.footer{ text-align: center;
+		 font-size: 15px;
+		 padding-top: 10px;}
