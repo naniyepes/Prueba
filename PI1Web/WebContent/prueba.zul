@@ -1,0 +1,14 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
+
+<?page title="Pruebas" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Pruebas" border="normal" >
+Hola!!
+ Messagebox.show("The order has been cancelled.");
+ <hbox width="100%" pack="center">
+            <button id="submitButton" label="Submit" />
+            <button id="cancelButton" label="Cancel" />
+        </hbox>
+</window>
+</zk>

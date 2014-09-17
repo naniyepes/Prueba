@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="932F34A9-CCB5-F27D-E987-5A1D49BB6394" name="TAB_ACT_ACTIVIDAD">
+<createdBy>home</createdBy>
+<createdTime>2014-04-10 04:06:24 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>ModeloDatosActividades</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="VAR_ID" id="2C27DF24-A830-C19F-BD2B-4D899DF2E7B3">
+<createdBy>home</createdBy>
+<createdTime>2014-04-10 04:07:25 UTC</createdTime>
+<comment>Identificacion del tipo de actividad</comment>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>ModeloDatosActividades</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 BYTE</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="VAR_NOMBRE" id="040A27EF-50F5-5829-79B7-D1D5E688AFAE">
+<createdBy>home</createdBy>
+<createdTime>2014-04-10 04:09:36 UTC</createdTime>
+<comment>En este campo se coloca el nombre de la actividad</comment>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>ModeloDatosActividades</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="VAR_DESCRIPCION" id="16BE4EDD-64E2-1D5F-1F94-234B486F474B">
+<createdBy>home</createdBy>
+<createdTime>2014-04-10 04:10:44 UTC</createdTime>
+<comment>En este campo se hace una descripcion detallada de lo realizado en la actividad</comment>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>ModeloDatosActividades</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 BYTE</dataTypeSize>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="79F8783F-1ECF-DA6A-BD46-ED90B396972D" name="TAB_ACT_ACTIVIDAD_PK">
+<createdBy>home</createdBy>
+<createdTime>2014-04-10 04:10:56 UTC</createdTime>
+<generatorID>Generado por el Usuario</generatorID>
+<ownerDesignName>ModeloDatosActividades</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2C27DF24-A830-C19F-BD2B-4D899DF2E7B3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

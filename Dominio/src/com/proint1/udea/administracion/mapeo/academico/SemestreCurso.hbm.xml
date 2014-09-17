@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-may-2014 11:58:30 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proint1.udea.administracion.entidades.academico.SemestreCurso" table="TB_ADM_SEMESTREXCURSO" >
+        <id name="idn" type="long">
+            <column name="NB_SCU_IDN" precision="10" scale="0" />
+            <generator class="increment" />
+        </id>        
+        
+        <many-to-one name="curso" class="com.proint1.udea.administracion.entidades.academico.Curso" update="false" insert="false">
+            <column name="NB_CUR_IDN" precision="10" scale="0" not-null="true"/>
+        </many-to-one>
+        
+        <many-to-one name="semestre" class="com.proint1.udea.administracion.entidades.academico.Semestre" update="false" insert="false">
+            <column name="NB_SEM_IDN" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        
+        <many-to-one name="modalidadCurso" class="com.proint1.udea.administracion.entidades.academico.ModalidadCurso" update="false" insert="false">
+            <column name="VR_MCU_IDN" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        
+        <property name="cursoIDN" type="long">
+            <column name="NB_CUR_IDN" length="10" not-null="true" />
+        </property> 
+        
+        <property name="semestreIDN" type="long">
+            <column name="NB_SEM_IDN" length="10" not-null="true" />
+        </property> 
+        
+        <property name="modalidadCursoIDN" type="string">
+            <column name="VR_MCU_IDN" length="5" not-null="true" />
+        </property> 
+        
+        <property name="totalTiempo" type="double">
+            <column name="NB_SCU_TOTALTIEMPO" precision="14" scale="4"/>
+        </property>
+        
+    </class>
+</hibernate-mapping>

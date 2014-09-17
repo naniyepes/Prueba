@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   					   http://www.springframework.org/schema/beans/spring-beans.xsd
+	   					   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	   					   http://www.springframework.org/schema/context/spring-context-2.5.xsd" xmlns:context="http://www.springframework.org/schema/context">
+	
+  
+<!-- BEANS DE NEGOCIO -->	
+
+<!-- DAO TIPO DE ACTIVIDAD -->	
+<bean id="tipoActividadDao"     class="com.proint1.udea.actividad.dao.TipoActividadDAO">    <property name="sessionFactory" ref="factory"/> </bean> 
+<bean id="docenteGrupoDao"     class="com.proint1.udea.actividad.dao.DocenteGrupoDAO">    <property name="sessionFactory" ref="factory"/> </bean>
+<bean id="reporteActividadDAO"     class="com.proint1.udea.actividad.dao.ReporteActividadDAO">    <property name="sessionFactory" ref="factory"/> </bean>
+<bean id="operacionesSumaryGruposDAO"     class="com.proint1.udea.actividad.dao.OperacionesSumaryGruposDAO">    <property name="sessionFactory" ref="factory"/> </bean>
+
+
+<!-- BEANS DE CAPA DE PRESENTACIÓN -->	
+  
+    <!-- BEANS DE NEGOCIO -->	
+    <bean id="sumaryGrupoInt" class="com.proint1.udea.actividad.ngc.SumaryGruposNgc">
+	    <property name="operacionesSumaryGruposDAO" ref="operacionesSumaryGruposDAO"></property>
+	</bean>
+	
+    <!-- BEANS PARA LOS CONTROLADORES -->		
+	<bean id="sumaryGrupoCtl" class="com.proint1.udea.actividad.ctl.SumaryGrupoCtl" scope="prototype"> 
+ 		<property name="sumaryGrupoInt" ref="sumaryGrupoInt"></property>    
+	</bean>  
+	
+</beans>	

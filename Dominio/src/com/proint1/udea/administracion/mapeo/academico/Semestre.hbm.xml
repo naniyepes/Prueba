@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 10-may-2014 11:58:30 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class
+  name="com.proint1.udea.administracion.entidades.academico.Semestre" table="TB_ADM_SEMESTRE">
+  <id name="idn" type="long">
+   <column name="NB_SEM_IDN" precision="10" scale="0"/>
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false"
+   name="dependenciaAcademicaIDN" type="long">
+   <column length="10" name="NB_DEP_IDN" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="estadoSemestreIdn" type="string">
+   <column length="5" name="VR_ESM_CODIGO" not-null="true"/>
+  </property>
+  <many-to-one
+   class="com.proint1.udea.administracion.entidades.dependencias.DependenciaAcademica"
+   insert="false" name="dependenciaAcademica" update="false">
+   <column name="NB_DEP_IDN" not-null="true" precision="10" scale="0"/>
+  </many-to-one>
+  <many-to-one
+   class="com.proint1.udea.administracion.entidades.academico.EstadoSemestre"
+   insert="false" name="estadoSemestre" update="false">
+   <column length="5" name="VR_ESM_CODIGO"/>
+  </many-to-one>
+  <property generated="never" lazy="false" name="agno" type="java.lang.Integer">
+   <column name="NB_SEM_AGNO" not-null="true" precision="4" scale="0" sql-type="BINARY"/>
+  </property>
+  <property generated="never" lazy="false" name="periodo" type="java.lang.Integer">
+   <column name="NB_SEM_PERIODO" precision="2" scale="0"/>
+  </property>
+  <property generated="never" lazy="false" name="usuarioActualizacion" type="string">
+   <column length="32" name="VR_ADTUSUARIO"/>
+  </property>
+  <property generated="never" lazy="false" name="fechaActualizacion" type="date">
+   <column length="7" name="DT_ADTFECHA"/>
+  </property>
+ </class>
+</hibernate-mapping>

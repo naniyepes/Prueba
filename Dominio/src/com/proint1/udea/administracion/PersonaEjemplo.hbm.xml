@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 3/04/2014 05:14:00 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="com.proint1.udea.administracion.PersonaEjemplo"
+  schema="PROINT1" table="PERSONA">
+  <id name="column2" type="long">
+   <column name="COLUMN2" precision="10" scale="0"/>
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="vrNombre" type="string">
+   <column length="20" name="VR_NOMBRE"/>
+  </property>
+  <property generated="never" lazy="false" name="vrApellido" type="string">
+   <column length="20" name="VR_APELLIDO"/>
+  </property>
+ </class>
+</hibernate-mapping>

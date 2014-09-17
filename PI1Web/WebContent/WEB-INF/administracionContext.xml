@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+	xmlns:p="http://www.springframework.org/schema/p" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/context/spring-context-2.5.xsd" 
+	xmlns:context="http://www.springframework.org/schema/context">
+
+<!-- BEANS DE ACCESO A DATOS, DAO -->
+
+    <bean id="personaDAO" class="com.proint1.udea.administracion.dao.PersonaDAO">
+		<property name="sessionFactory"> <ref bean="factory"  /></property>
+	</bean>
+	
+	<!-- DAO de persistencia para la entida PErsona del Proyecto no del ejemplo -->	
+	<bean id="personaProyDAO" class="com.proint1.udea.administracion.dao.terceros.PersonaProyDAO">
+	   <property name="sessionFactory"> <ref bean="factory"  /></property>
+	</bean>
+	
+  	<bean id="unidadAcademicaDAO" class="com.proint1.udea.administracion.dao.dependencias.UnidadAcademicaDAO">
+	   <property name="sessionFactory"> <ref bean="factory"  /></property>
+	</bean>
+    <bean id="dependenciaAcademicaDAO" class="com.proint1.udea.administracion.dao.dependencias.DependenciaAcademicaDAO">
+	   <property name="sessionFactory"> <ref bean="factory"  /></property>
+	</bean>
+	
+	<bean id="cursoDAO" class="com.proint1.udea.administracion.dao.CursoDAO">
+	   <property name="sessionFactory"> <ref bean="factory"  /></property>
+	</bean>
+	
+	<bean id="semestreDAO" class="com.proint1.udea.administracion.dao.SemestreDAO">
+	   <property name="sessionFactory"> <ref bean="factory"  /></property>
+	</bean>
+
+	<bean id="modalidadCursoDAO" class="com.proint1.udea.administracion.dao.ModalidadCursoDAO">
+	   <property name="sessionFactory"> <ref bean="factory"  /></property>
+	</bean>
+	
+	<bean id="semestreCursoDAO" class="com.proint1.udea.administracion.dao.SemestreCursoDAO">
+	   <property name="sessionFactory"> <ref bean="factory"  /></property>
+	</bean>
+	
+	<bean id="estadoSemestreDAO" class="com.proint1.udea.administracion.dao.EstadoSemestreDAO">
+	   <property name="sessionFactory"> <ref bean="factory"  /></property>
+	</bean>		
+
+    <bean id="grupoDAO" class="com.proint1.udea.administracion.dao.GrupoDAO">
+	   <property name="sessionFactory"> <ref bean="factory"  /></property>
+	</bean>
+	
+	<bean id="cursoOperacionesDAO" class="com.proint1.udea.administracion.dao.CursoOperacionesDAO">
+	   <property name="sessionFactory"> <ref bean="factory"  /></property>
+	</bean>
+
+  
+    <!-- BEANS DE CAPA DE PRESENTACIÓN -->	
+  
+    <!-- BEANS DE NEGOCIO -->	
+
+    <bean id="personaInt" class="com.proint1.udea.administracion.ngc.PersonaNgc">
+	    <property name="personaDAO" ref="personaDAO"></property>
+	</bean>
+	
+	<bean id="cursoOpInt" class="com.proint1.udea.administracion.ngc.AdministrarCursosNgc">
+	    <property name="cursoOperacionesDAO" ref="cursoOperacionesDAO"></property>
+	</bean>
+	
+	
+    <!-- BEANS PARA LOS CONTROLADORES -->		
+
+	<bean id="consultarPersonaCtl" class="com.proint1.udea.administracion.ctl.ConsultarPersonaCtl" scope="prototype"> 
+ 		<property name="personaInt" ref="personaInt"></property>    
+	</bean>  
+
+	<bean id="crearPersonaCtl" class="com.proint1.udea.administracion.ctl.CrearPersonaCtl" scope="prototype"> 
+ 		<property name="personaInt" ref="personaInt"></property>    
+	</bean>  
+	
+	<bean id="crearCursoCtl" class="com.proint1.udea.administracion.ctl.CrearCursoCtl" scope="prototype"> 
+ 		<property name="cursoOpInt" ref="cursoOpInt"></property>    
+	</bean>  
+	
+	<bean id="editarCursoCtl" class="com.proint1.udea.administracion.ctl.EditarCursoCtl" scope="prototype"> 
+ 		<property name="cursoOpInt" ref="cursoOpInt"></property>    
+	</bean>
+	
+	<bean id="administrarCursoCtl" class="com.proint1.udea.administracion.ctl.AdministrarCursosCtl" scope="prototype"> 
+ 		<property name="cursoOpInt" ref="cursoOpInt"></property>    
+	</bean>  
+	
+	<bean id="loginNgc" class="com.proint1.udea.administracion.ngc.LoginNgc">
+	    <property name="personaProyDAO" ref="personaProyDAO"></property>
+	</bean>
+	
+	     <!-- BEANS WEB    -->
+	 <bean id="loginCtl" class="com.proint1.udea.administracion.ctl.LoginCtl" scope="prototype">
+	 	 <property name="loginNgc" ref="loginNgc"></property>
+	 </bean>
+	 
+     <bean id="principalCtl" class="com.proint1.udea.administracion.ctl.PrincipalCtl" scope="prototype">
+     	 	 <property name="loginCtl" ref="loginCtl"></property>    
+	 </bean>
+      
+     <bean id="menuPrincipalHorCtl" class="com.proint1.udea.administracion.ctl.MenuPrincipalHorCtl" scope="prototype"/>
+	
+</beans>

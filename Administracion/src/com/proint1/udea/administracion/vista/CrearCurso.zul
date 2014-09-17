@@ -1,0 +1,37 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
+<zk>
+	<window title="Crear Curso" border="none" width="600px"
+		apply="${crearCursoCtl}">
+		<grid>
+			<columns>
+				<column />
+				<column />
+			</columns>
+			<rows>
+				<row>
+					<label value="ID Curso" width="150px" />
+					<hlayout>
+						<textbox id="txtIdCurso" width="150px"
+							tabindex="1" />
+					</hlayout>
+				</row>
+				<row>
+					<label value="Nombre Curso" width="150px" />
+					<textbox id="txtNombreCurso" width="150px"
+						tabindex="2" />
+
+				</row>
+				<row>
+					<label value="ID Dependencia Academica"
+						width="150px" />
+					<combobox id="cmbDep" width="150px" readonly="true" > </combobox>
+				</row>
+			</rows>
+		</grid>
+
+		<button id="btnAceptar" label="Aceptar"></button>
+		<button id="btnCancelar" label="Cancelar"></button>
+
+	</window>
+</zk>

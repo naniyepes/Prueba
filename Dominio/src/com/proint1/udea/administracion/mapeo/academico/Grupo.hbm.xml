@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.proint1.udea.administracion.entidades.academico.Grupo"
+  schema="PROINT1" table="TB_ADM_GRUPO">
+  <id name="idn" type="long">
+   <column name="NB_GPO_IDN" precision="10" scale="0"/>
+   <generator class="increment"/>
+  </id>
+  <property generated="never" lazy="false" name="numeroGrupo" type="string">
+   <column length="12" name="VR_GPO_NUMERO" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="horario" type="string">
+   <column length="50" name="VR_GPO_HORARIO"/>
+  </property>
+  <property generated="never" lazy="false" name="usuarioActualizacion" type="string">
+   <column length="32" name="VR_ADTUSUARIO"/>
+  </property>
+  <property generated="never" lazy="false" name="fechaActualizacion" type="date">
+   <column length="7" name="DT_ADTFECHA"/>
+  </property>
+  <property generated="never" lazy="false" name="semestreCursoIdn" type="long">
+   <column name="NB_SCU_IDN" not-null="true" precision="10" scale="0"/>
+  </property>
+  <many-to-one name="semestreCurso"  class="com.proint1.udea.administracion.entidades.academico.SemestreCurso"   insert="false"  update="false">
+   <column name="NB_SCU_IDN" precision="10" scale="0"/>
+  </many-to-one>
+ </class>
+</hibernate-mapping>

@@ -1,0 +1,48 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk xmlns:n="native">
+	<!-- Begin Menu -->
+	<menubar id="menubar" autodrop="true"  apply="org.zkoss.bind.BindComposer" viewModel="@id('vmp') @init('com.proint1.udea.administracion.ctl.MenuPrincipalHorCtl')">
+		<menuitem label="Inicio" onClick="alert(self.label)" />
+		<menu label="Institucional">
+			<menupopup>
+				<menuitem label="Quienes somos" onClick="alert(self.label)" />
+				<menuitem label="Perfil profesional" onClick="alert(self.label)" />
+			</menupopup>
+		</menu>
+		<menu label="Estudiar Sistemas">
+			<menupopup>
+				<menuitem label="Programas Pregrado" onClick="alert(self.label)" />
+				<menuitem label="Programos Posgrado" onClick="alert(self.label)" />
+			</menupopup>
+		</menu>
+		<menu label="Servicios y productos">
+			<menupopup>
+			<menu label="Reporte de actividades docentes">
+			<menupopup>
+				<menuitem id="btnReporteActividades" label="Reportar actividades" onClick="@command('regActividadesLink')"/>
+				<menuitem id="btnConsultarActividades" label="Consultar actividades" onClick="@command('regActividadesLink')"/>
+			</menupopup>
+		   </menu><menu label="Administración">
+				<menupopup>
+					<menu label="Académico">
+						<menupopup>
+							<menuitem label="Administrar Semestres" onClick="@command('admSemestresLink')" />
+							<menuitem label="Administrar Cursos"  onClick="@command('admCursosLink')"          ></menuitem>
+							<menuitem label="Administrar Grupos Semestre"></menuitem>
+						</menupopup>
+					</menu>
+				</menupopup>
+			</menu>
+				<menuitem id="btnCurriculo" label="Gestionar micro-curriculo"/>
+			</menupopup>
+			
+		</menu>
+		<menu label="Investigacion">
+			<menupopup>
+				<menuitem label="Grupos" onClick="alert(self.label)" />
+				<menuitem label="Producción académica" onClick="alert(self.label)" />
+			</menupopup>
+		</menu>
+	</menubar>
+	<!-- End Menu -->
+</zk>

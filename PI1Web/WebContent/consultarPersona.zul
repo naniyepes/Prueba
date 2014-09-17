@@ -1,0 +1,13 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
+
+	<window title="${labels.administracion.prueba}" border="none" width="600px" apply="${consultarPersonaCtl}">
+		 <button id="btnCrear" label="Crear Persona"></button>
+		 <listbox id="lsxPersona" mold="paging" pageSize="10">
+		 	<listhead>
+	            <listheader label="${labels.administracion.persona.nombre}" width="80px"></listheader>
+	            <listheader label="${labels.administracion.persona.apellido}" width="80px"></listheader>
+	        </listhead>
+	        
+         </listbox>
+	</window>

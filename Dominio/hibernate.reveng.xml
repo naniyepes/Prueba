@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+
+
+	<table-filter match-name="TB_ACT_DOCENTEXGRUPO"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ACT_REPORTEACTIVIDAD"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ACT_TIPO_ACTIVIDAD"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ADM_CURSO" match-schema="PROINT1"></table-filter>
+	<table-filter match-name="TB_ADM_DEPENDENCIA_ACADEMICA"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ADM_DOCENTE" match-schema="PROINT1"></table-filter>
+	<table-filter match-name="TB_ADM_DOCENTESXDEPENDENCIA"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ADM_ESTADO_SEMESTRE"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ADM_ESTUDIANTE"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ADM_GRUPO" match-schema="PROINT1"></table-filter>
+	<table-filter match-name="TB_ADM_MATRICULA"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ADM_MODALIDAD_CURSO"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ADM_PAISES" match-schema="PROINT1"></table-filter>
+	<table-filter match-name="TB_ADM_PERMISOSXROL"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ADM_PERSONA" match-schema="PROINT1"></table-filter>
+	<table-filter match-name="TB_ADM_PROPIEDADES"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ADM_RECURSO" match-schema="PROINT1"></table-filter>
+	<table-filter match-name="TB_ADM_ROL" match-schema="PROINT1"></table-filter>
+	<table-filter match-name="TB_ADM_SEMESTRE" match-schema="PROINT1"></table-filter>
+	<table-filter match-name="TB_ADM_SEMESTREXCURSO"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ADM_TAREAS_PROGRAMADAS"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ADM_TIPOIDENTIFICACION"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ADM_TIPO_DEPENDENCIA"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ADM_UNIDAD_ACADEMICA"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ADM_UNIVERSIDADES"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_ADM_USUARIO" match-schema="PROINT1"></table-filter>
+	<table-filter match-name="TB_ADM_USUARIOXROL"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_MIC_ACTA" match-schema="PROINT1"></table-filter>
+	<table-filter match-name="TB_MIC_CURSOSXPENSUM"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_MIC_ESTADOMIC"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_MIC_EVALUACION"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_MIC_MICROCURRICULO"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_MIC_NUCLEOACADEMICO"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_MIC_UNIDADES" match-schema="PROINT1"></table-filter>
+	<table-filter match-name="TB_MIC_VERSIONPENSUM"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_PRD_AUTOR" match-schema="PROINT1"></table-filter>
+	<table-filter match-name="TB_PRD_AUTORESXPRODUCCION"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_PRD_CAMPOS" match-schema="PROINT1"></table-filter>
+	<table-filter match-name="TB_PRD_DETALLEPRODUCIONES"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_PRD_GRUPOINVESTIGACION"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_PRD_MIEMBROSXGRUPO"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_PRD_PRODUCCION"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_PRD_TIPOPRODUCCION"
+		match-schema="PROINT1">
+	</table-filter>
+	<table-filter match-name="TB_PRD_TIPOPRODUCIONESXCAMPO"
+		match-schema="PROINT1">
+	</table-filter>
+</hibernate-reverse-engineering>
+
+

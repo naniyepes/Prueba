@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                                                   http://www.springframework.org/schema/beans/spring-beans.xsd
+                                                   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+                                                   http://www.springframework.org/schema/context/spring-context-2.5.xsd" xmlns:context="http://www.springframework.org/schema/context">
+        
+        <!-- BEANS  CONFIGURACION DATASOURCE-->
+        <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+                <property name="driverClassName">
+                        <value>oracle.jdbc.driver.OracleDriver</value>  
+                </property>
+                <property name="url">
+                        <value>jdbc:oracle:thin:@localhost:1521:XE</value>
+                </property>
+                <property name="username">
+                        <value>proint1</value>
+                </property>
+                <property name="password"> 
+                        <value>proint1</value>
+                </property>
+        </bean>
+        
+        
+    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="sessionFactory" ref="factory"></property>
+    </bean>
+        
+        
+        <!-- BEANS CONFIGURACION HIBERNATE-->
+        <bean id="factory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+                <property name="mappingResources">
+                        <list>     
+                           <!-- Mapeos administración -->                       
+                            <value>com/proint1/udea/administracion/PersonaEjemplo.hbm.xml</value> 
+                            <!-- Terceros -->
+                             <value>com/proint1/udea/administracion/mapeo/terceros/Persona.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/mapeo/terceros/Tipoidentificacion.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/mapeo/terceros/Docente.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/mapeo/terceros/Estudiante.hbm.xml</value> 
+                             
+                              <!-- Dependencias  --> 
+                             <value>com/proint1/udea/administracion/mapeo/dependencias/UnidadAcademica.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/mapeo/dependencias/TipoDependencia.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/mapeo/dependencias/DependenciaAcademica.hbm.xml</value>
+                             
+                             <!-- Academicos  -->
+                             <value>com/proint1/udea/administracion/mapeo/academico/Curso.hbm.xml</value>                           
+                             <value>com/proint1/udea/administracion/mapeo/academico/Semestre.hbm.xml</value>                           
+                             <value>com/proint1/udea/administracion/mapeo/academico/EstadoSemestre.hbm.xml</value>                           
+                             <value>com/proint1/udea/administracion/mapeo/academico/ModalidadCurso.hbm.xml</value>                           
+                             <value>com/proint1/udea/administracion/mapeo/academico/SemestreCurso.hbm.xml</value>  
+                             <value>com/proint1/udea/administracion/mapeo/academico/Grupo.hbm.xml</value>
+                             
+                             <!-- Seguridad  -->
+                             <value>com/proint1/udea/administracion/mapeo/seguridad/Usuario.hbm.xml</value>
+                             
+                            <!-- FIN Mapeos administracion -->  
+
+
+
+
+							 <!-- Mapeos microcurriculo --> 
+
+							 
+							  <!-- Mapeos produccion academica 
+
+							  <value>com/proint1/udea/produccion/mapeo/TbPrdAutor.hbm.xml</value>
+                              <value>com/proint1/udea/produccion/mapeo/TbPrdAutoresxproduccion.hbm.xml</value>
+                              <value>com/proint1/udea/produccion/mapeo/TbPrdCampos.hbm.xml</value>
+                              <value>com/proint1/udea/produccion/mapeo/TbPrdDetalleproduciones.hbm.xml</value>
+                              <value>com/proint1/udea/produccion/mapeo/TbPrdGrupoinvestigacion.hbm.xml</value>
+                              <value>com/proint1/udea/produccion/mapeo/TbPrdMiembrosxgrupo.hbm.xml</value>
+                              <value>com/proint1/udea/produccion/mapeo/TbPrdProduccion.hbm.xml</value>
+                              <value>com/proint1/udea/produccion/mapeo/TbPrdTipoproduccion.hbm.xml</value>
+                              <value>com/proint1/udea/produccion/mapeo/TbPrdTipoproducionesxcampo.hbm.xml</value> -->
+							  
+							   <!-- Mapeos registro actividad -->
+							   <value>com/proint1/udea/actividad/mapeo/TipoActividad.hbm.xml</value>
+							   <value>com/proint1/udea/actividad/mapeo/ReporteActividad.hbm.xml</value>
+							   <value>com/proint1/udea/actividad/mapeo/DocenteGrupo.hbm.xml</value>
+                        </list>
+                </property>
+                                               
+                
+                
+                <property name="hibernateProperties">
+                        <props>
+                                <prop key="hibernate.dialect"> org.hibernate.dialect.Oracle10gDialect</prop>
+                                <prop key="hibernate.show_sql">true</prop>
+                                <prop key="hibernate.transaction.factory_class">
+                                        org.hibernate.transaction.JDBCTransactionFactory
+                                </prop>
+                        </props>
+                </property>
+                
+                <property name="dataSource">  <ref bean="dataSource"/> </property>
+        </bean>
+        
+        
+       <!-- BEANS ADMINISTRACION -->
+       <import resource="administracionContext.xml"/>  
+        
+       <!-- BEANS MICROCURRICULO-->  
+       <import resource="microcurriculoContext.xml"/>         
+               
+       <!-- BEANS PRODUCCION ACADEMICA -->
+       <import resource="produccionAcademicaContext.xml"/>
+                
+        <!-- BEANS REGISTRO ACTIVIDAD -->
+        <import resource="registroActividadContext.xml"/>
+        
+</beans>

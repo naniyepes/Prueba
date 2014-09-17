@@ -1,0 +1,25 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
+
+	<window title="${labels.actividad.sumaryGrupos}" border="none" width="1200px" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('com.proint1.udea.actividad.ctl.SumaryGrupoCtl')">
+		 <div>
+		 	<toolbar>
+		 		<toolbarbutton label="Actualizar" onClick="@command('actualizarLink')" image="/img/actualizar.ico"></toolbarbutton>
+		 		<toolbarbutton label="Registrar tiempos" onClick="@command('registrarTiemposLink')" image="/img/editar.ico"></toolbarbutton>
+		 	</toolbar>
+		 <listbox id="listaGrupos" mold="paging" pageSize="10">
+		 	<listhead>
+		 	    <listheader label="Nro" width="40px" align="right" ></listheader>
+	            <listheader label="Dependencia" width="150px"></listheader>
+	            <listheader label="Semestre" width="80px"></listheader>
+	            <listheader label="Codigo Curso" width="100px"></listheader>
+	            <listheader label="Nombre Curso" width="300px"></listheader>
+	            <listheader label="Modalidad Curso" width="100px"></listheader>
+	            <listheader label="Número Grupo" width="100px" align="center"></listheader>
+	            <listheader label="Horario" width="80px"></listheader>
+	            <listheader label="Total Tiempo" width="80px" align="right"></listheader>
+		 	</listhead>
+	        
+         </listbox></div>
+		 
+	</window>

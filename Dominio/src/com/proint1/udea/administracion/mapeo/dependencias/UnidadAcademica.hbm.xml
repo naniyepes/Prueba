@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.proint1.udea.administracion.entidades.dependencias.UnidadAcademica" table="TB_ADM_UNIDAD_ACADEMICA">
+        <id name="idn" type="long">
+            <column name="NB_UNI_IDN" precision="10" scale="0" />
+            <generator class="increment" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="VR_UNI_NOMBRE" length="200" not-null="true" />
+        </property>
+        <property name="usuarioActualizacion" type="string">
+            <column name="VR_ADTUSUARIO" length="32" />
+        </property>
+        <property name="fechaActualizacion" type="date">
+            <column name="DT_ADTFECHA" length="7" />
+        </property>
+        <set name="dependenciasAcademicasSet" table="TB_ADM_DEPENDENCIA_ACADEMICA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_UNI_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.administracion.entidades.dependencias.DependenciaAcademica" />
+        </set>
+    </class>
+</hibernate-mapping>

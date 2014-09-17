@@ -1,0 +1,25 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
+
+	<window title="Sumario Semestres" border="none" width="1000px" apply="org.zkoss.bind.BindComposer" viewModel="@id('vmm') @init('com.proint1.udea.administracion.ctl.SumarySemestresCtl')">
+		 <div align="right">
+		 <toolbar>
+		 		<toolbarbutton label="Actualizar" onClick="@command('actualizarLink')" image="/img/actualizar.ico"></toolbarbutton>
+		 		<toolbarbutton label="Agregar" onClick="@command('agregarLink')" image="/img/agregar.ico"></toolbarbutton>
+		 		<toolbarbutton label="Editar" onClick="@command('editarLink')" image="/img/editar.ico"></toolbarbutton>
+		 		<toolbarbutton label="Eliminar" onClick="@command('eliminarLink')" image="/img/eliminar.ico"></toolbarbutton>
+		 	</toolbar>
+		 </div>
+		 <div>
+		 <listbox id="listaDatos" mold="paging" pageSize="10">
+		 	<listhead>
+		 	    <listheader label="Nro" width="50px"></listheader>
+	            <listheader label="Dependencia" width="150px"></listheader>
+	            <listheader label="Año" width="80px"></listheader>
+	            <listheader label="Periodo" width="100px"></listheader>
+	            <listheader label="Estado" width="100px"></listheader>
+		 	</listhead>
+         </listbox>
+         </div>
+	</window>
+
