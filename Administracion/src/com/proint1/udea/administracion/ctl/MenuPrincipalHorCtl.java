@@ -76,7 +76,12 @@ public class MenuPrincipalHorCtl implements Serializable {
 		}
 	}
 	
-	
+	@Command
+	public void admGruposLink(){
+		if(validarUsuario()){
+			agregarTab("Administar Grupos", "admg1", "AdministrarGrupos.zul",null);
+		}
+	}
 	
 
 	/**
