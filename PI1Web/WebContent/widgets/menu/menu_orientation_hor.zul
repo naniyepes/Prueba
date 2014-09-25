@@ -27,8 +27,8 @@
 					<menu label="Académico">
 						<menupopup>
 							<menuitem label="Administrar Semestres" onClick="@command('admSemestresLink')" />
-							<menuitem label="Administrar Cursos"  onClick="@command('admCursosLink')"          ></menuitem>
-							<menuitem label="Administrar Grupos Semestre"></menuitem>
+							<menuitem label="Administrar Cursos"  onClick="@command('admCursosLink')"></menuitem>
+							<menuitem label="Administrar Grupos" onClick="@command('admGruposLink')"></menuitem>
 						</menupopup>
 					</menu>
 				</menupopup>

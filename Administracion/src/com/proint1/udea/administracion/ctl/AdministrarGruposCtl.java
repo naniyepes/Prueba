@@ -9,6 +9,7 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
+import org.zkoss.zul.Button;
 import org.zkoss.zul.ListModel;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
@@ -16,52 +17,64 @@ import org.zkoss.zul.Listcell;
 import org.zkoss.zul.Listitem;
 import org.zkoss.zul.ListitemRenderer;
 import org.zkoss.zul.Messagebox;
+import org.zkoss.zul.Textbox;
 import org.zkoss.zul.Toolbarbutton;
 import org.zkoss.zul.Window;
 
-import com.proint1.udea.administracion.dao.CursoDTO;
+import com.proint1.udea.administracion.dao.GrupoDTO;
+import com.proint1.udea.administracion.dto.SumaryGruposDTO;
+import com.proint1.udea.administracion.entidades.academico.Curso;
+import com.proint1.udea.administracion.ngc.CursoIntDAO;
 import com.proint1.udea.administracion.ngc.CursoOperacionesIntDAO;
+import com.proint1.udea.administracion.ngc.GrupoOperacionesIntDAO;
 
-public class AdministrarCursosCtl extends GenericForwardComposer implements ListitemRenderer {
+public class AdministrarGruposCtl extends GenericForwardComposer implements ListitemRenderer {
 
 	Toolbarbutton btnCrear;
 	Toolbarbutton btnEditar;
 	Toolbarbutton btnEliminar;
-	Toolbarbutton btnGuardar;
-	Listbox lsxCurso;
-	Listbox lsxBusqueda;
+	Listbox lsxGrupo;
+	
 
 
-	private static Logger logger=Logger.getLogger(AdministrarCursosCtl.class);
+	private static Logger logger=Logger.getLogger(AdministrarGruposCtl.class);
 
-	CursoOperacionesIntDAO cursoOpInt;
+	//interface que sirve como guia para implementar la funciones de la clase grupo
+	GrupoOperacionesIntDAO grupoOpInt;
 
 	public void doAfterCompose(Component comp) throws Exception {
 		super.doAfterCompose(comp);
-		logger.info("cargando ventana de consultar personas");         
+		logger.info("cargando ventana de Grupos");         
 
 	}
 
+	//cuando se este creando se implementa el metodo definirModelo.
 	public void onCreate() {
 		definirModelo();
 	}
 	
 	private void definirModelo() {
-		List<CursoDTO> listaCursos = cursoOpInt.getCursoList();
-		ListModel model = new ListModelList(listaCursos);
-		lsxCurso.setModel(model);
-		lsxCurso.setItemRenderer(this);
+		List<GrupoDTO> listaGrupos = grupoOpInt.getGrupoList();
+		ListModel model = new ListModelList(listaGrupos);
+		lsxGrupo.setModel(model);
+		lsxGrupo.setItemRenderer(this);
 	}
 
 	@Override
 	public void render(Listitem arg0, Object arg1, int arg2) throws Exception {
-		CursoDTO curso = (CursoDTO)arg1;
-		Listcell lcIDCurso = new Listcell(curso.getIdCurso());
-		Listcell lcNombre = new Listcell(curso.getNombreCurso());
-		Listcell lcDependencia = new Listcell(curso.getNombreDependencia());
-		arg0.appendChild(lcIDCurso);
-		arg0.appendChild(lcNombre);
-		arg0.appendChild(lcDependencia);
+		GrupoDTO grupo = (GrupoDTO)arg1;
+		Listcell lcSemestre = new Listcell(Integer.toString(grupo.getAgno()));
+		Listcell lcPeriodo = new Listcell(Integer.toString(grupo.getPeriodo()));
+		Listcell lcNumCurso = new Listcell(grupo.getIdCurso());
+		Listcell lcNombreCurso = new Listcell(grupo.getNombre());
+		Listcell lcNumGrupo = new Listcell(grupo.getNumeroGrupo());
+		Listcell lcHorario = new Listcell(grupo.getHorario());
+		arg0.appendChild(lcSemestre);
+		arg0.appendChild(lcPeriodo);
+		arg0.appendChild(lcNumCurso);
+		arg0.appendChild(lcNombreCurso);
+		arg0.appendChild(lcNumGrupo);
+		arg0.appendChild(lcHorario);
 	}
 
 	public void onClick$btnCrear(Event ev) {	
@@ -83,7 +96,7 @@ public class AdministrarCursosCtl extends GenericForwardComposer implements List
 
 	public void onClick$btnEliminar(Event ev) {		
 		
-		if (lsxCurso.getSelectedIndex() == -1)
+		if (lsxGrupo.getSelectedIndex() == -1)
 		{
 			Messagebox.show("Debe seleccionar un item de la lista", "Información", Messagebox.OK, Messagebox.INFORMATION);			
 		}
@@ -92,17 +105,17 @@ public class AdministrarCursosCtl extends GenericForwardComposer implements List
 			Messagebox.show("¿Desea eliminar el curso seleccionado?", "Confirmación", Messagebox.OK | Messagebox.CANCEL, Messagebox.QUESTION, new org.zkoss.zk.ui.event.EventListener() {
 			    public void onEvent(Event evt) throws InterruptedException {
 			        if (evt.getName().equals("onOK")) {
-			        	CursoDTO dto =(CursoDTO) lsxCurso.getModel().getElementAt(lsxCurso.getSelectedIndex());			
-			    		cursoOpInt.eliminarCurso(dto);
+			        	GrupoDTO dto =(GrupoDTO) lsxGrupo.getModel().getElementAt(lsxGrupo.getSelectedIndex());			
+			    		grupoOpInt.eliminarGrupo(dto);
 			    		alert("Curso Eliminado");	
 			        } 
 			    }
 			});
 			
-			List<CursoDTO> listaCursos = cursoOpInt.getCursoList();
-			ListModel model = new ListModelList(listaCursos);
-			lsxCurso.setModel(model);
-			lsxCurso.setItemRenderer(this);			
+			List<GrupoDTO> listaGrupos = grupoOpInt.getGrupoList();
+			ListModel model = new ListModelList(listaGrupos);
+			lsxGrupo.setModel(model);
+			lsxGrupo.setItemRenderer(this);			
 		}
 		
 		
@@ -112,14 +125,14 @@ public class AdministrarCursosCtl extends GenericForwardComposer implements List
 		
 		
 		
-		if (lsxCurso.getSelectedIndex() == -1)
+		if (lsxGrupo.getSelectedIndex() == -1)
 		{
 			Messagebox.show("Debe seleccionar un item de la lista", "Información", Messagebox.OK, Messagebox.INFORMATION);
 			
 		}
 		else
 		{
-			CursoDTO dto =(CursoDTO) lsxCurso.getModel().getElementAt(lsxCurso.getSelectedIndex());
+			GrupoDTO dto =(GrupoDTO) lsxGrupo.getModel().getElementAt(lsxGrupo.getSelectedIndex());
 			
 			
 			HashMap<String, Object> params = new HashMap<String, Object>();
@@ -143,20 +156,14 @@ public class AdministrarCursosCtl extends GenericForwardComposer implements List
 				
 	}
 
-	/**
-	 * @return the cursoOpInt
-	 */
-	public CursoOperacionesIntDAO getCursoOpInt() {
-		return cursoOpInt;
+	public GrupoOperacionesIntDAO getGrupoOpInt() {
+		return grupoOpInt;
 	}
 
-	/**
-	 * @param cursoOpInt the cursoOpInt to set
-	 */
-	public void setCursoOpInt(CursoOperacionesIntDAO cursoOpInt) {
-		this.cursoOpInt = cursoOpInt;
+	public void setGrupoOpInt(GrupoOperacionesIntDAO grupoOpInt) {
+		this.grupoOpInt = grupoOpInt;
 	}
-	
-	
+
+
 
 }
