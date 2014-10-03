@@ -61,6 +61,12 @@ public class MenuPrincipalHorCtl implements Serializable {
 		}
 	}
 	
+	@Command
+	public void registroActividadesLink(){
+		if(validarUsuario()){
+			agregarTab("Registrar Actividades", "rega1", "RegistroActividades.zul",null);
+		}
+	}
 	
 	@Command
 	public void admSemestresLink(){
