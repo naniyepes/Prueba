@@ -30,15 +30,8 @@ public class ActDocenteGrupoNgc implements OperacionesSumaryGruposInterfaceDAO,S
 
 	@Override
 	public List<RegistrarActividadDTO> getRegistrarActividadDTO(long idnDOG) {
-		// TODO Auto-generated method stub
-		return null;
+		return operacionesSumaryGruposDAO.getRegistrarActividadDTO(idnDOG);
 	}
-	
-
-//	@Override
-//	public List<SumaryGruposDTO> getSumariGrupoDTOPorDocenteIdnNativo(long idnDocente) {
-//		return operacionesSumaryGruposDAO.getSumariGrupoDTOPorDocenteIdnNativo(idnDocente);
-//	}
 
 	/**
 	 * @return the operacionesSumaryGruposDAO
@@ -54,11 +47,5 @@ public class ActDocenteGrupoNgc implements OperacionesSumaryGruposInterfaceDAO,S
 			OperacionesSumaryGruposDAO operacionesSumaryGruposDAO) {
 		this.operacionesSumaryGruposDAO = operacionesSumaryGruposDAO;
 	}
-
-	
-	
-	
-	
-	
 
 }
