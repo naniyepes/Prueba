@@ -29,6 +29,9 @@ public class SumaryGruposDTO implements Serializable {
 	
 	private String grupoNumero;
 	
+	/**Identificador unico del grupo*/
+	private long idn;
+	
 	private String Horario;
 	
 	private Double totalTiempoHoras;
@@ -39,6 +42,15 @@ public class SumaryGruposDTO implements Serializable {
 
 	public void setNombreDocente(String nombreDocente) {
 		this.nombreDocente = nombreDocente;
+	}
+	
+	
+	public long getIdn() {
+		return idn;
+	}
+
+	public void setIdn(long idn) {
+		this.idn = idn;
 	}
 
 	public String getNombreDependencia() {
@@ -88,7 +100,7 @@ public class SumaryGruposDTO implements Serializable {
 	public void setGrupoNumero(String grupoNumero) {
 		this.grupoNumero = grupoNumero;
 	}
-
+	
 	public String getHorario() {
 		return Horario;
 	}
@@ -96,13 +108,5 @@ public class SumaryGruposDTO implements Serializable {
 	public void setHorario(String horario) {
 		Horario = horario;
 	}
-
-	public Double getTotalTiempoHoras() {
-		return totalTiempoHoras;
-	}
-
-	public void setTotalTiempoHoras(Double totalTiempoHoras) {
-		this.totalTiempoHoras = totalTiempoHoras;	
-		}
 	
 }

@@ -1,9 +1,22 @@
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
-
-<?page title="new page title" contentType="text/html;charset=UTF-8"?>
 <zk>
-<window title="new page title" border="normal" apply="${ActDocenteGrupoCtl}">
-New Content Here!
-</window>
+	<window title="Administrar Actividades" border="normal" width="1000px" apply="${actDocenteGrupoCtl}" maximizable="true" mode="overlapped" closable="true">
+		<toolbar>
+			<toolbarbutton id="btnCrear" label="Crear" image="/img/agregar.ico"></toolbarbutton>
+		</toolbar>
+
+		<listbox id="lsxActividades" mold="paging" pageSize="8">
+			<listhead>
+			    <listheader label="Nro" width="40px" align="right" ></listheader>
+				<listheader label="Fecha" width="100px"></listheader>
+				<listheader label="Tipo Actividad" width="200px"></listheader>
+				<listheader label="Descripción" width="300px"></listheader>
+                <listheader label="Editar" width="80px"></listheader>
+                <listheader label="Eliminar" width="80px"></listheader>
+			</listhead>
+
+		</listbox>
+
+	</window>
 </zk>

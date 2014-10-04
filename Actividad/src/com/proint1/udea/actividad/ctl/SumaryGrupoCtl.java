@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.zkoss.bind.annotation.AfterCompose;
-import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.zk.ui.Component;
@@ -23,13 +22,12 @@ import org.zkoss.zul.Listcell;
 import org.zkoss.zul.Listitem;
 import org.zkoss.zul.ListitemRenderer;
 import org.zkoss.zul.Messagebox;
+import org.zkoss.zul.Toolbarbutton;
 import org.zkoss.zul.Window;
 
 import com.proint1.udea.actividad.ngc.OperacionesSumaryGruposInterfaceDAO;
 import com.proint1.udea.administracion.dto.SumaryGruposDTO;
 import com.proint1.udea.administracion.entidades.terceros.Docente;
-
-
 
 /**
  * Permite crear un Sumario de grupos asignados a un {@link Docente} logueado
@@ -38,13 +36,15 @@ import com.proint1.udea.administracion.entidades.terceros.Docente;
  */
 public class SumaryGrupoCtl extends GenericForwardComposer implements ListitemRenderer<Object> {
 
-	/**serialVersionUID **/
+	/** serialVersionUID **/
 	private static final long serialVersionUID = -7024470034429612586L;
-	private static Logger logger=Logger.getLogger(SumaryGrupoCtl.class);
-	
-	/** Docente activo*/
+	private static Logger logger = Logger.getLogger(SumaryGrupoCtl.class);
+
+	/** Docente activo */
 	private Docente docenteActivo;
-	
+
+	Toolbarbutton btnVerResumen;
+	Toolbarbutton btnRegistrarActividad;
 	
 	/**
 	 * dao de operaciones
@@ -53,26 +53,24 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements ListitemRe
 	OperacionesSumaryGruposInterfaceDAO sumaryGrupoInt;
 	@Wire
 	Listbox listaGrupos;
-	
-	/** Nro de registros*/
+
+	/** Nro de registros */
 	private int nroRegistros = 0;
 
 	@AfterCompose
-	public void afterCompose(@ContextParam(ContextType.VIEW) Component view){
+	public void afterCompose(@ContextParam(ContextType.VIEW) Component view) {
 		Selectors.wireComponents(view, this, false);
 		definirModelo();
 	}
-	
-	
+
 	/**
 	 * Constructor
 	 */
 	public SumaryGrupoCtl() {
 		super();
-		//capturamos los parámetros enviados
+		// capturamos los parámetros enviados
 		docenteActivo = (Docente) Executions.getCurrent().getArg().get("docente");
 	}
-
 
 	/**
 	 * @param separator
@@ -85,7 +83,6 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements ListitemRe
 		definirModelo();
 	}
 
-
 	/**
 	 * Define los datos de la lista
 	 */
@@ -93,7 +90,7 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements ListitemRe
 		List<SumaryGruposDTO> listaSumaryGrupo = sumaryGrupoInt.getSumariGrupoDTOPorDocenteIdn(getDocenteActivo().getIdn());
 		ListModel<SumaryGruposDTO> model = new ListModelList<SumaryGruposDTO>(listaSumaryGrupo);
 		listaGrupos.setModel(model);
-		nroRegistros=0;
+		nroRegistros = 0;
 		listaGrupos.setItemRenderer(this);
 	}
 
@@ -102,7 +99,7 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements ListitemRe
 	 * Evento que alimenta la lsista
 	 */
 	public void render(Listitem lista, Object arg1, int arg2) throws Exception {
-		SumaryGruposDTO dto = (SumaryGruposDTO)arg1;
+		SumaryGruposDTO dto = (SumaryGruposDTO) arg1;
 		nroRegistros++;
 		Listcell lc0 = new Listcell(String.valueOf(nroRegistros));
 		Listcell lcDependencia = new Listcell(dto.getNombreDependencia());
@@ -112,8 +109,7 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements ListitemRe
 		Listcell lcModCurso = new Listcell(dto.getModalidadCurso());
 		Listcell lcnGruponro = new Listcell(dto.getGrupoNumero());
 		Listcell lcnHorario = new Listcell(dto.getHorario());
-		Listcell lcnTotalTiempo = new Listcell(dto.getTotalTiempoHoras().toString());		
-		//Se llena la lista con las celdas anteriores
+		// Se llena la lista con las celdas anteriores
 		lista.appendChild(lc0);
 		lista.appendChild(lcDependencia);
 		lista.appendChild(lcSemestre);
@@ -122,35 +118,36 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements ListitemRe
 		lista.appendChild(lcModCurso);
 		lista.appendChild(lcnGruponro);
 		lista.appendChild(lcnHorario);
-		lista.appendChild(lcnTotalTiempo);
-	}
-
-	public void onClick$btnCrear(Event ev) {
-		java.io.InputStream zulInput = this.getClass().getClassLoader().getResourceAsStream("com/proint1/udea/administracion/vista/crearPersona.zul") ;
-		java.io.Reader zulReader = new java.io.InputStreamReader(zulInput);
-		try {
-			Component c = Executions.createComponentsDirectly(zulReader,"zul",null,new HashMap<String, Object>()) ;
-			Window win = (Window)c;
-			win.doModal();
-			System.out.println("despues del do");
-			definirModelo();
-		} catch (IOException e) {
-			logger.error("ERROR",e);
-		}		
-	}
-
-	
-	@Command
-	public void  actualizarLink(){
-		Messagebox.show("Autenticación exitosa, favor seleccionar nuevamente la opción requerida","Validación exitosa",Messagebox.OK,Messagebox.INFORMATION);
-		definirModelo();
 	}
 	
-	@Command
-	public void  registrarTiemposLink(){
-		Messagebox.show("Autenticación exitosa, favor seleccionar nuevamente la opción requerida","Validación exitosa",Messagebox.OK,Messagebox.INFORMATION);
-	}
 
+	
+
+	/**
+	 * Administrar las actividades de la celda seleccionada
+	 * @param ev
+	 */
+	public void onClick$btnRegistrarActividad(Event ev) {
+		if (listaGrupos.getSelectedIndex() == -1){
+			Messagebox.show("Debe seleccionar un item de la lista", "Información", Messagebox.OK, Messagebox.INFORMATION);
+		}else{
+			SumaryGruposDTO dto =(SumaryGruposDTO) listaGrupos.getModel().getElementAt(listaGrupos.getSelectedIndex());
+			HashMap<String, Object> params = new HashMap<String, Object>();
+			params.put("dtoSumaryGrupos", dto);		
+			java.io.InputStream zulInput = this.getClass().getClassLoader().getResourceAsStream("com/proint1/udea/actividad/vista/ActDocenteGrupo.zul") ;
+			java.io.Reader zulReader = new java.io.InputStreamReader(zulInput);
+			try {
+				Component c = Executions.createComponentsDirectly(zulReader,"zul",null,params) ;
+				Window win = (Window)c;
+				win.doModal();
+				System.out.println("despues del do");
+				definirModelo();
+			} catch (IOException e) {
+				logger.error("ERROR",e);
+			}
+		}
+	}
+	
 	/**
 	 * @return the sumaryGrupoInt
 	 */
@@ -159,7 +156,8 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements ListitemRe
 	}
 
 	/**
-	 * @param sumaryGrupoInt the sumaryGrupoInt to set
+	 * @param sumaryGrupoInt
+	 *            the sumaryGrupoInt to set
 	 */
 	public void setSumaryGrupoInt(OperacionesSumaryGruposInterfaceDAO sumaryGrupoInt) {
 		this.sumaryGrupoInt = sumaryGrupoInt;
@@ -173,7 +171,8 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements ListitemRe
 	}
 
 	/**
-	 * @param docenteActivo the docenteActivo to set
+	 * @param docenteActivo
+	 *            the docenteActivo to set
 	 */
 	public void setDocenteActivo(Docente docenteActivo) {
 		this.docenteActivo = docenteActivo;

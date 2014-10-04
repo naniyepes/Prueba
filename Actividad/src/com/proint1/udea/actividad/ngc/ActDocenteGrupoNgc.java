@@ -12,7 +12,8 @@ import com.proint1.udea.administracion.dto.SumaryGruposDTO;
  * @author Juan Cardona
  * @since 23/06/2014
  */
-public class SumaryGruposNgc implements OperacionesSumaryGruposInterfaceDAO,Serializable {
+public class ActDocenteGrupoNgc implements OperacionesSumaryGruposInterfaceDAO,Serializable {
+
 
 	/**
 	 * 
@@ -25,11 +26,12 @@ public class SumaryGruposNgc implements OperacionesSumaryGruposInterfaceDAO,Seri
 	public List<SumaryGruposDTO> getSumariGrupoDTOPorDocenteIdn(long idnDocente) {
 		return operacionesSumaryGruposDAO.getSumariGrupoDTOPorDocenteIdn(idnDocente);
 	}
+	
 
-//	@Override
-//	public List<SumaryGruposDTO> getSumariGrupoDTOPorDocenteIdnNativo(long idnDocente) {
-//		return operacionesSumaryGruposDAO.getSumariGrupoDTOPorDocenteIdnNativo(idnDocente);
-//	}
+	@Override
+	public List<RegistrarActividadDTO> getRegistrarActividadDTO(long idnDOG) {
+		return operacionesSumaryGruposDAO.getRegistrarActividadDTO(idnDOG);
+	}
 
 	/**
 	 * @return the operacionesSumaryGruposDAO
@@ -45,13 +47,5 @@ public class SumaryGruposNgc implements OperacionesSumaryGruposInterfaceDAO,Seri
 			OperacionesSumaryGruposDAO operacionesSumaryGruposDAO) {
 		this.operacionesSumaryGruposDAO = operacionesSumaryGruposDAO;
 	}
-
-	@Override
-	public List<RegistrarActividadDTO> getRegistrarActividadDTO(long idnDOG) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
 
 }

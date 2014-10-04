@@ -14,9 +14,7 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
 
 import com.proint1.udea.administracion.dao.CursoDTO;
-import com.proint1.udea.administracion.entidades.academico.Curso;
 import com.proint1.udea.administracion.entidades.dependencias.DependenciaAcademica;
-import com.proint1.udea.administracion.ngc.CursoIntDAO;
 import com.proint1.udea.administracion.ngc.CursoOperacionesIntDAO;
 
 public class EditarCursoCtl extends GenericForwardComposer {

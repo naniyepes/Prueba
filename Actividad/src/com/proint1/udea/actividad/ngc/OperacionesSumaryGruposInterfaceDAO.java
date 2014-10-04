@@ -2,6 +2,7 @@ package com.proint1.udea.actividad.ngc;
 
 import java.util.List;
 
+import com.proint1.udea.actividad.dao.RegistrarActividadDTO;
 import com.proint1.udea.administracion.dto.SumaryGruposDTO;
 
 /**
@@ -17,12 +18,14 @@ public interface OperacionesSumaryGruposInterfaceDAO {
 	 * @return
 	 */
 	List<SumaryGruposDTO> getSumariGrupoDTOPorDocenteIdn(long idnDocente);
+	
+	List<RegistrarActividadDTO> getRegistrarActividadDTO (long idnDOG);
 
 	/**
 	 * Lista de grupos asignados a un docente nativo
 	 * @param idnDocente
 	 * @return
 	 */
-	List<SumaryGruposDTO> getSumariGrupoDTOPorDocenteIdnNativo(long idnDocente);
+	//List<SumaryGruposDTO> getSumariGrupoDTOPorDocenteIdnNativo(long idnDocente);
 
 }

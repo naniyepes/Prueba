@@ -8,7 +8,7 @@
 <!-- BEANS DE NEGOCIO -->	
 
 <!-- DAO TIPO DE ACTIVIDAD -->	
-<bean id="tipoActividadDao"     class="com.proint1.udea.actividad.dao.TipoActividadDAO">    <property name="sessionFactory" ref="factory"/> </bean> 
+<!-- <bean id="tipoActividadDao"     class="com.proint1.udea.actividad.dao.TipoActividadDAO">    <property name="sessionFactory" ref="factory"/> </bean> -->	
 <bean id="docenteGrupoDao"     class="com.proint1.udea.actividad.dao.DocenteGrupoDAO">    <property name="sessionFactory" ref="factory"/> </bean>
 <bean id="reporteActividadDAO"     class="com.proint1.udea.actividad.dao.ReporteActividadDAO">    <property name="sessionFactory" ref="factory"/> </bean>
 <bean id="operacionesSumaryGruposDAO"     class="com.proint1.udea.actividad.dao.OperacionesSumaryGruposDAO">    <property name="sessionFactory" ref="factory"/> </bean>
@@ -21,9 +21,17 @@
 	    <property name="operacionesSumaryGruposDAO" ref="operacionesSumaryGruposDAO"></property>
 	</bean>
 	
+	<bean id="actDocenteGrupoInt" class="com.proint1.udea.actividad.ngc.ActDocenteGrupoNgc">
+	    <property name="operacionesSumaryGruposDAO" ref="operacionesSumaryGruposDAO"></property>
+	</bean>
+		
     <!-- BEANS PARA LOS CONTROLADORES -->		
 	<bean id="sumaryGrupoCtl" class="com.proint1.udea.actividad.ctl.SumaryGrupoCtl" scope="prototype"> 
  		<property name="sumaryGrupoInt" ref="sumaryGrupoInt"></property>    
 	</bean>  
+	
+	<bean id="actDocenteGrupoCtl" class="com.proint1.udea.actividad.ctl.ActDocenteGrupoCtl" scope="prototype"> 
+ 		<property name="actDocenteGrupoInt" ref="actDocenteGrupoInt"></property>    
+	</bean>
 	
 </beans>	
