@@ -84,7 +84,7 @@ public class LoginCtl extends GenericForwardComposer implements Serializable {
 		}else{
 			WebSessionAccesor.setUsuario(usuarioProy);
 			validarUsuarioDocente(usuarioProy);
-			WebSessionAccesor.getTabboxAplication().getSelectedTab().detach();
+			//WebSessionAccesor.getTabboxAplication().getSelectedTab().detach();
 			WebSessionAccesor.getUsuarioTextbox().setValue("Usuario: " + usuarioProy.getNombreCompleto());
 			WebSessionAccesor.getUsuarioTextbox().setDisabled(true);
 			Messagebox.show("Autenticación exitosa, favor seleccionar nuevamente la opción requerida","Validación exitosa",Messagebox.OK,Messagebox.INFORMATION);

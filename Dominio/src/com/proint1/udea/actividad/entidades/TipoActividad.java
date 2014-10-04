@@ -89,12 +89,9 @@ public class TipoActividad implements java.io.Serializable {
 	
 	
 	
-
-
-	
-	
-	
-	
-	
+	@Override
+	public String toString() {
+		return nombre;
+	}
 
 }

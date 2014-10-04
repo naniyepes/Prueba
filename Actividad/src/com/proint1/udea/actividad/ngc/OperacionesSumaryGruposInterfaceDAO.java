@@ -3,6 +3,7 @@ package com.proint1.udea.actividad.ngc;
 import java.util.List;
 
 import com.proint1.udea.actividad.dao.RegistrarActividadDTO;
+import com.proint1.udea.actividad.entidades.TipoActividad;
 import com.proint1.udea.administracion.dto.SumaryGruposDTO;
 
 /**
@@ -19,13 +20,35 @@ public interface OperacionesSumaryGruposInterfaceDAO {
 	 */
 	List<SumaryGruposDTO> getSumariGrupoDTOPorDocenteIdn(long idnDocente);
 	
-	List<RegistrarActividadDTO> getRegistrarActividadDTO (long idnDOG);
-
 	/**
-	 * Lista de grupos asignados a un docente nativo
-	 * @param idnDocente
+	 * Lista de actividades registradas
+	 * @param idnDOG
 	 * @return
 	 */
-	//List<SumaryGruposDTO> getSumariGrupoDTOPorDocenteIdnNativo(long idnDocente);
+	List<RegistrarActividadDTO> getActividadesList (long idnDOG);
+
+	/**
+	 * Tipo de Actividades
+	 * @return
+	 */
+	List<TipoActividad> getTipoActividadesList();
+
+	/**
+	 * Guardar Actividad
+	 * @param dto
+	 */
+	void guardarActividad(RegistrarActividadDTO dto);
+
+	/**
+	 * Actializa una actividad
+	 * @param registrarActividadDTO
+	 */
+	void actualizarActividad(RegistrarActividadDTO registrarActividadDTO);
+
+	/**
+	 * Elimina una atividad por su idn
+	 * @param idn
+	 */
+	void eliminarActividad(long idn);
 
 }

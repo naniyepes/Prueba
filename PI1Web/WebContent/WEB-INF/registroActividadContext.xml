@@ -11,7 +11,10 @@
 <!-- <bean id="tipoActividadDao"     class="com.proint1.udea.actividad.dao.TipoActividadDAO">    <property name="sessionFactory" ref="factory"/> </bean> -->	
 <bean id="docenteGrupoDao"     class="com.proint1.udea.actividad.dao.DocenteGrupoDAO">    <property name="sessionFactory" ref="factory"/> </bean>
 <bean id="reporteActividadDAO"     class="com.proint1.udea.actividad.dao.ReporteActividadDAO">    <property name="sessionFactory" ref="factory"/> </bean>
-<bean id="operacionesSumaryGruposDAO"     class="com.proint1.udea.actividad.dao.OperacionesSumaryGruposDAO">    <property name="sessionFactory" ref="factory"/> </bean>
+<bean id="operacionesSumaryGruposDAO"     class="com.proint1.udea.actividad.dao.OperacionesSumaryGruposDAO"> 
+  <property name="sessionFactory" ref="factory"/>
+  <property name="reporteActividadDAO" ref="reporteActividadDAO"></property>
+</bean>
 
 
 <!-- BEANS DE CAPA DE PRESENTACIÓN -->	
@@ -32,6 +35,10 @@
 	
 	<bean id="actDocenteGrupoCtl" class="com.proint1.udea.actividad.ctl.ActDocenteGrupoCtl" scope="prototype"> 
  		<property name="actDocenteGrupoInt" ref="actDocenteGrupoInt"></property>    
+	</bean>
+	
+	<bean id="administrarActividadCtl" class="com.proint1.udea.actividad.ctl.AdminsitrarActividadCtl" scope="prototype"> 
+ 		<property name="operacionesInt" ref="actDocenteGrupoInt"></property>    
 	</bean>
 	
 </beans>	
