@@ -2,10 +2,8 @@
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
 <zk>
 	<window title="Registro Actividades" border="none" width="1200px" apply="${sumaryGrupoCtl}">
-
 		 	<toolbar>
-			 	<toolbarbutton id="btnVerResumen" label="Ver Resumen" image="/img/agregar.ico"></toolbarbutton>
-				<toolbarbutton id="btnRegistrarActividad" label="Registrar Actividad" image="/img/editar.ico"></toolbarbutton>		 		
+				<toolbarbutton id="btnRegistrarActividad" label="Administrar Actividades" image="/img/editar.ico"></toolbarbutton>		 		
 		 	</toolbar>
 		 <listbox id="listaGrupos" mold="paging" pageSize="10">
 		 	<listhead>
@@ -16,8 +14,7 @@
 	            <listheader label="Nombre Curso" width="300px"></listheader>
 	            <listheader label="Modalidad Curso" width="100px"></listheader>
 	            <listheader label="Número Grupo" width="100px" align="center"></listheader>
-	           <!-- <listheader label="Horario" width="80px"></listheader>-->
-	            <!--<listheader label="Total Tiempo" width="80px" align="right"></listheader>-->
+	            <listheader label="Horario" width="80px"></listheader>
 		 	</listhead>
 	        
          </listbox>

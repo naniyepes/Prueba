@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.zkoss.bind.annotation.AfterCompose;
-import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.zk.ui.Component;
@@ -32,12 +31,10 @@ import com.proint1.udea.administracion.entidades.terceros.Docente;
 
 /**
  * Permite crear un Sumario de grupos asignados a un {@link Docente} logueado
- * 
  * @author Juan Cardona
  * @since 23/06/2014
  */
-public class SumaryGrupoCtl extends GenericForwardComposer implements
-		ListitemRenderer<Object> {
+public class SumaryGrupoCtl extends GenericForwardComposer implements ListitemRenderer<Object> {
 
 	/** serialVersionUID **/
 	private static final long serialVersionUID = -7024470034429612586L;
@@ -72,8 +69,7 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements
 	public SumaryGrupoCtl() {
 		super();
 		// capturamos los parámetros enviados
-		docenteActivo = (Docente) Executions.getCurrent().getArg()
-				.get("docente");
+		docenteActivo = (Docente) Executions.getCurrent().getArg().get("docente");
 	}
 
 	/**
@@ -92,8 +88,7 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements
 	 */
 	private void definirModelo() {
 		List<SumaryGruposDTO> listaSumaryGrupo = sumaryGrupoInt.getSumariGrupoDTOPorDocenteIdn(getDocenteActivo().getIdn());
-		ListModel<SumaryGruposDTO> model = new ListModelList<SumaryGruposDTO>(
-				listaSumaryGrupo);
+		ListModel<SumaryGruposDTO> model = new ListModelList<SumaryGruposDTO>(listaSumaryGrupo);
 		listaGrupos.setModel(model);
 		nroRegistros = 0;
 		listaGrupos.setItemRenderer(this);
@@ -113,6 +108,7 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements
 		Listcell lcNomCurso = new Listcell(dto.getNombreCurso());
 		Listcell lcModCurso = new Listcell(dto.getModalidadCurso());
 		Listcell lcnGruponro = new Listcell(dto.getGrupoNumero());
+		Listcell lcnHorario = new Listcell(dto.getHorario());
 		// Se llena la lista con las celdas anteriores
 		lista.appendChild(lc0);
 		lista.appendChild(lcDependencia);
@@ -121,25 +117,23 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements
 		lista.appendChild(lcNomCurso);
 		lista.appendChild(lcModCurso);
 		lista.appendChild(lcnGruponro);
+		lista.appendChild(lcnHorario);
 	}
 	
-	public void onClick$btnVerResumen(Event ev) {
-		
 
-		
-		if (listaGrupos.getSelectedIndex() == -1)
-		{
+	
+
+	/**
+	 * Administrar las actividades de la celda seleccionada
+	 * @param ev
+	 */
+	public void onClick$btnRegistrarActividad(Event ev) {
+		if (listaGrupos.getSelectedIndex() == -1){
 			Messagebox.show("Debe seleccionar un item de la lista", "Información", Messagebox.OK, Messagebox.INFORMATION);
-			
-		}
-		else
-		{
+		}else{
 			SumaryGruposDTO dto =(SumaryGruposDTO) listaGrupos.getModel().getElementAt(listaGrupos.getSelectedIndex());
-			
-			
 			HashMap<String, Object> params = new HashMap<String, Object>();
 			params.put("dtoSumaryGrupos", dto);		
-			
 			java.io.InputStream zulInput = this.getClass().getClassLoader().getResourceAsStream("com/proint1/udea/actividad/vista/ActDocenteGrupo.zul") ;
 			java.io.Reader zulReader = new java.io.InputStreamReader(zulInput);
 			try {
@@ -149,22 +143,11 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements
 				System.out.println("despues del do");
 				definirModelo();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				logger.error("ERROR",e);
 			}
 		}
 	}
 	
-	
-
-	@Command
-	public void registrarActividadesLink() {
-		Messagebox
-				.show("Autenticación exitosa, favor seleccionar nuevamente la opción requerida",
-						"Validación exitosa", Messagebox.OK,
-						Messagebox.INFORMATION);
-	}
-
 	/**
 	 * @return the sumaryGrupoInt
 	 */
@@ -176,8 +159,7 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements
 	 * @param sumaryGrupoInt
 	 *            the sumaryGrupoInt to set
 	 */
-	public void setSumaryGrupoInt(
-			OperacionesSumaryGruposInterfaceDAO sumaryGrupoInt) {
+	public void setSumaryGrupoInt(OperacionesSumaryGruposInterfaceDAO sumaryGrupoInt) {
 		this.sumaryGrupoInt = sumaryGrupoInt;
 	}
 
