@@ -19,7 +19,8 @@
 			<menupopup>
 			<menu label="Reporte de actividades docentes">
 			<menupopup>
-				<menuitem id="btnReporteActividades" label="Reportar actividades" onClick="@command('regActividadesLink')"/>
+				
+				<menuitem id="btnReporteActividades" label="Reportar actividades" onClick="@command('registroActividadesLink')"/>
 				<menuitem id="btnConsultarActividades" label="Consultar actividades" onClick="@command('regActividadesLink')"/>
 			</menupopup>
 		   </menu><menu label="Administración">
@@ -27,8 +28,8 @@
 					<menu label="Académico">
 						<menupopup>
 							<menuitem label="Administrar Semestres" onClick="@command('admSemestresLink')" />
-							<menuitem label="Administrar Cursos"  onClick="@command('admCursosLink')"          ></menuitem>
-							<menuitem label="Administrar Grupos Semestre"></menuitem>
+							<menuitem label="Administrar Cursos"  onClick="@command('admCursosLink')"></menuitem>
+							<menuitem label="Administrar Grupos" onClick="@command('admGruposLink')"></menuitem>
 						</menupopup>
 					</menu>
 				</menupopup>
