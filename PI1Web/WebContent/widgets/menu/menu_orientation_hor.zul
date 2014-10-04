@@ -19,7 +19,8 @@
 			<menupopup>
 			<menu label="Reporte de actividades docentes">
 			<menupopup>
-				<menuitem id="btnReporteActividades" label="Reportar actividades" onClick="@command('regActividadesLink')"/>
+				
+				<menuitem id="btnReporteActividades" label="Reportar actividades" onClick="@command('registroActividadesLink')"/>
 				<menuitem id="btnConsultarActividades" label="Consultar actividades" onClick="@command('regActividadesLink')"/>
 			</menupopup>
 		   </menu><menu label="Administración">

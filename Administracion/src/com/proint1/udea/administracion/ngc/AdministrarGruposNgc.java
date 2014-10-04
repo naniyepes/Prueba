@@ -5,11 +5,8 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.proint1.udea.administracion.dao.CursoDAO;
 import com.proint1.udea.administracion.dao.GrupoDTO;
 import com.proint1.udea.administracion.dao.GrupoOperacionesDAO;
-import com.proint1.udea.administracion.entidades.academico.Curso;
-import com.proint1.udea.administracion.entidades.dependencias.DependenciaAcademica;
 
 /**
  * Clase de Negocio para realizar la administración de los grupos

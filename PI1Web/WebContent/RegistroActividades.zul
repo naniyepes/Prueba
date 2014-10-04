@@ -1,0 +1,22 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk>
+	<window title="Registrar Actividades" border="none" width="1000px" apply="${registroActividadCtl}">
+		 	<toolbar>
+		 		<toolbarbutton id="btnRegistrarActividad" label="Registrar Actividad"  image="/img/actualizar.ico"></toolbarbutton>
+		 		<toolbarbutton id="btnVerResumen" label="Ver Resumen" image="/img/editar.ico"></toolbarbutton>
+		 	</toolbar>
+		 	
+		 <listbox id="lsxlistaGrupos" mold="paging" pageSize="10">
+		 	<listhead>
+	            <listheader label="Semestre" width="40px"></listheader>
+	            <listheader label="Periodo" width="20px"></listheader>
+	            <listheader label="Codigo Curso" width="40px"></listheader>
+	            <listheader label="Nombre Curso" width="80px"></listheader>
+	            <listheader label="Grupo" width="20px" align="center"></listheader>
+	            
+		 	</listhead>
+	        
+         </listbox>
+		 
+	</window>
+</zk>
