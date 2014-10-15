@@ -11,17 +11,21 @@ import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.event.Event;
+import org.zkoss.zk.ui.event.EventListener;
+import org.zkoss.zk.ui.event.Events;
+import org.zkoss.zk.ui.event.SelectEvent;
 import org.zkoss.zk.ui.select.Selectors;
+import org.zkoss.zk.ui.select.annotation.Listen;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
+import org.zkoss.zul.Button;
 import org.zkoss.zul.ListModel;
 import org.zkoss.zul.ListModelList;
 import org.zkoss.zul.Listbox;
 import org.zkoss.zul.Listcell;
 import org.zkoss.zul.Listitem;
 import org.zkoss.zul.ListitemRenderer;
-import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Toolbarbutton;
 import org.zkoss.zul.Window;
 
@@ -90,10 +94,14 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements ListitemRe
 		List<SumaryGruposDTO> listaSumaryGrupo = sumaryGrupoInt.getSumariGrupoDTOPorDocenteIdn(getDocenteActivo().getIdn());
 		ListModel<SumaryGruposDTO> model = new ListModelList<SumaryGruposDTO>(listaSumaryGrupo);
 		listaGrupos.setModel(model);
-		nroRegistros = 0;
 		listaGrupos.setItemRenderer(this);
+		listaGrupos.setMultiple(false);
+		nroRegistros = 0;
 	}
 
+	public void onSelect$listaGrupos(SelectEvent evt) {
+	}
+	
 	@Override
 	/**
 	 * Evento que alimenta la lsista
@@ -109,6 +117,17 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements ListitemRe
 		Listcell lcModCurso = new Listcell(dto.getModalidadCurso());
 		Listcell lcnGruponro = new Listcell(dto.getGrupoNumero());
 		Listcell lcnHorario = new Listcell(dto.getHorario());
+		
+		Button btnAdministrar = new Button("Administrar");
+		btnAdministrar.addEventListener(Events.ON_CLICK, new EventListener<Event>() {
+			@Override
+			public void onEvent(Event arg0) throws Exception {
+				administrarActividades();
+			}
+		});
+		
+		Listcell lcAdministrar = new Listcell();
+		btnAdministrar.setParent(lcAdministrar);
 		// Se llena la lista con las celdas anteriores
 		lista.appendChild(lc0);
 		lista.appendChild(lcDependencia);
@@ -118,35 +137,29 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements ListitemRe
 		lista.appendChild(lcModCurso);
 		lista.appendChild(lcnGruponro);
 		lista.appendChild(lcnHorario);
+		lista.appendChild(lcAdministrar);
 	}
-	
-
 	
 
 	/**
-	 * Administrar las actividades de la celda seleccionada
-	 * @param ev
+	 * Administra las actividades de un registro seleccionado
 	 */
-	public void onClick$btnRegistrarActividad(Event ev) {
-		if (listaGrupos.getSelectedIndex() == -1){
-			Messagebox.show("Debe seleccionar un item de la lista", "Información", Messagebox.OK, Messagebox.INFORMATION);
-		}else{
-			SumaryGruposDTO dto =(SumaryGruposDTO) listaGrupos.getModel().getElementAt(listaGrupos.getSelectedIndex());
-			HashMap<String, Object> params = new HashMap<String, Object>();
-			params.put("dtoSumaryGrupos", dto);		
-			java.io.InputStream zulInput = this.getClass().getClassLoader().getResourceAsStream("com/proint1/udea/actividad/vista/ActDocenteGrupo.zul") ;
-			java.io.Reader zulReader = new java.io.InputStreamReader(zulInput);
-			try {
-				Component c = Executions.createComponentsDirectly(zulReader,"zul",null,params) ;
-				Window win = (Window)c;
-				win.doModal();
-				System.out.println("despues del do");
-				definirModelo();
-			} catch (IOException e) {
-				logger.error("ERROR",e);
-			}
+	public void administrarActividades(){
+		SumaryGruposDTO dto =(SumaryGruposDTO) listaGrupos.getModel().getElementAt(listaGrupos.getSelectedItem().getIndex());
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("dtoSumaryGrupos", dto);		
+		java.io.InputStream zulInput = this.getClass().getClassLoader().getResourceAsStream("com/proint1/udea/actividad/vista/ActDocenteGrupo.zul") ;
+		java.io.Reader zulReader = new java.io.InputStreamReader(zulInput);
+		try {
+			Component c = Executions.createComponentsDirectly(zulReader,"zul",null,params) ;
+			Window win = (Window)c;
+			win.doModal();
+			definirModelo();
+		} catch (IOException e) {
+			logger.error("ERROR",e);
 		}
 	}
+
 	
 	/**
 	 * @return the sumaryGrupoInt

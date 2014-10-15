@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.proint1.udea.actividad.dao.OperacionesSumaryGruposDAO;
 import com.proint1.udea.actividad.dao.RegistrarActividadDTO;
+import com.proint1.udea.actividad.entidades.TipoActividad;
 import com.proint1.udea.administracion.dto.SumaryGruposDTO;
 
 /**
@@ -29,8 +30,8 @@ public class ActDocenteGrupoNgc implements OperacionesSumaryGruposInterfaceDAO,S
 	
 
 	@Override
-	public List<RegistrarActividadDTO> getRegistrarActividadDTO(long idnDOG) {
-		return operacionesSumaryGruposDAO.getRegistrarActividadDTO(idnDOG);
+	public List<RegistrarActividadDTO> getActividadesList(long idnDOG) {
+		return operacionesSumaryGruposDAO.getActividadesList(idnDOG);
 	}
 
 	/**
@@ -46,6 +47,31 @@ public class ActDocenteGrupoNgc implements OperacionesSumaryGruposInterfaceDAO,S
 	public void setOperacionesSumaryGruposDAO(
 			OperacionesSumaryGruposDAO operacionesSumaryGruposDAO) {
 		this.operacionesSumaryGruposDAO = operacionesSumaryGruposDAO;
+	}
+
+
+	@Override
+	public List<TipoActividad> getTipoActividadesList() {
+		return operacionesSumaryGruposDAO.getTipoActividadesList();
+	}
+
+
+	@Override
+	public void guardarActividad(RegistrarActividadDTO dto) {
+		operacionesSumaryGruposDAO.guardarActividad(dto);
+		
+	}
+
+
+	@Override
+	public void actualizarActividad(RegistrarActividadDTO registrarActividadDTO) {
+		operacionesSumaryGruposDAO.actualizarActividad(registrarActividadDTO);
+	}
+
+
+	@Override
+	public void eliminarActividad(long idn) {
+		operacionesSumaryGruposDAO.eliminarActividad(idn);
 	}
 
 }

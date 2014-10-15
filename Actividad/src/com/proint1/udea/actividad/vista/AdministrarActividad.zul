@@ -1,0 +1,28 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
+<zk>
+	<window title="Administrar Actividad" border="normal"
+		width="800px" apply="${administrarActividadCtl}" maximizable="true"
+		mode="overlapped" closable="true">
+		<grid>
+			<rows>
+				<row>
+					<label value="Fecha"></label>
+					<datebox id="fechaActividadDateBox" ></datebox>
+				</row>
+				<row>
+					<label value="Tipo de Actividad"></label>
+					<combobox id="tipoActividadCombo" width="250px"></combobox>
+				</row>
+				<row>
+					<label value="Descripción"></label>
+					<textbox id ="descripcionTextBox" width="250px"></textbox>
+				</row>
+				<row>
+				  <button  id="BtnGuardar" label="Guardar" dir="normal" type="button" orient="horizontal" ></button>
+				  <button id="BtnCancelar" label="Cancelar" ></button>
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>
