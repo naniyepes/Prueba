@@ -33,9 +33,7 @@
 					<label/>
 					<hlayout>
 							<button id="btnAceptar" label="Aceptar"></button>
-							<button id="btnCancelar" label="Cancelar"></button>
-							
-						<textbox id="txtIdn" disabled="true" tabindex="1" />
+							<button id="btnCancelar" label="Cancelar"></button>							
 					</hlayout>
 				</row>
 			</rows>

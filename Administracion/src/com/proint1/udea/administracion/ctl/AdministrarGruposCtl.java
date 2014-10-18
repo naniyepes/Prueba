@@ -63,14 +63,13 @@ public class AdministrarGruposCtl extends GenericForwardComposer implements List
 	@Override
 	public void render(Listitem arg0, Object arg1, int arg2) throws Exception {
 		GrupoDTO grupo = (GrupoDTO)arg1;
-		Listcell lcSemestre = new Listcell(Integer.toString(grupo.getAgno()));
-		Listcell lcPeriodo = new Listcell(Integer.toString(grupo.getPeriodo()));
+		//Listcell lcSemestre = new Listcell(Integer.toString(grupo.getAgno()));
+		Listcell lcSemestre = new Listcell(grupo.getAgno());
 		Listcell lcNumCurso = new Listcell(grupo.getIdCurso());
 		Listcell lcNombreCurso = new Listcell(grupo.getNombre());
 		Listcell lcNumGrupo = new Listcell(grupo.getNumeroGrupo());
 		Listcell lcHorario = new Listcell(grupo.getHorario());
 		arg0.appendChild(lcSemestre);
-		arg0.appendChild(lcPeriodo);
 		arg0.appendChild(lcNumCurso);
 		arg0.appendChild(lcNombreCurso);
 		arg0.appendChild(lcNumGrupo);
@@ -79,7 +78,7 @@ public class AdministrarGruposCtl extends GenericForwardComposer implements List
 
 	public void onClick$btnCrear(Event ev) {	
 
-		java.io.InputStream zulInput = this.getClass().getClassLoader().getResourceAsStream("com/proint1/udea/administracion/vista/CrearCurso.zul") ;
+		java.io.InputStream zulInput = this.getClass().getClassLoader().getResourceAsStream("com/proint1/udea/administracion/vista/CrearGrupo.zul") ;
 		java.io.Reader zulReader = new java.io.InputStreamReader(zulInput);
 		try {
 			Component c = Executions.createComponentsDirectly(zulReader,"zul",null,new HashMap<String, Object>()) ;
@@ -133,12 +132,12 @@ public class AdministrarGruposCtl extends GenericForwardComposer implements List
 		else
 		{
 			GrupoDTO dto =(GrupoDTO) lsxGrupo.getModel().getElementAt(lsxGrupo.getSelectedIndex());
-			
+			logger.info(dto.getAgno());			
 			
 			HashMap<String, Object> params = new HashMap<String, Object>();
-			params.put("dtoCurso", dto);		
+			params.put("dtoGrupo", dto);		
 			
-			java.io.InputStream zulInput = this.getClass().getClassLoader().getResourceAsStream("com/proint1/udea/administracion/vista/EditarCurso.zul") ;
+			java.io.InputStream zulInput = this.getClass().getClassLoader().getResourceAsStream("com/proint1/udea/administracion/vista/EditarGrupo.zul") ;
 			java.io.Reader zulReader = new java.io.InputStreamReader(zulInput);
 			try {
 				Component c = Executions.createComponentsDirectly(zulReader,"zul",null,params) ;
@@ -150,10 +149,7 @@ public class AdministrarGruposCtl extends GenericForwardComposer implements List
 				// TODO Auto-generated catch block
 				logger.error("ERROR",e);
 			}
-		}
-		
-			
-				
+		}				
 	}
 
 	public GrupoOperacionesIntDAO getGrupoOpInt() {

@@ -1,0 +1,36 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
+<zk>
+	<window title="Crear Grupo" border="none" width="600px" apply="${crearGrupoCtl}">
+		<grid>
+			<columns>
+				<column />
+				<column />
+			</columns>
+			<rows>
+				<row>
+					<label value="Curso"
+						width="150px" />
+					<combobox id="cmbCurso" width="150px" readonly="true" > </combobox>
+
+				</row>
+				<row>
+					<label value="Nro Grupo" width="150px" />
+					<hlayout>
+						<textbox id="txtNumeroGrupo" width="150px" tabindex="1" />
+					</hlayout>
+				</row>
+				<row>
+					<label value="Horario" width="150px" />
+					<hlayout>
+						<textbox id="txtHorario" width="150px" tabindex="1" />
+					</hlayout>
+				</row>
+			</rows>
+		</grid>
+
+		<button id="btnAceptar" label="Aceptar"></button>
+		<button id="btnCancelar" label="Cancelar"></button>
+
+	</window>
+</zk>

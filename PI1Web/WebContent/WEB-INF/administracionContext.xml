@@ -90,6 +90,14 @@
  		<property name="cursoOpInt" ref="cursoOpInt"></property>    
 	</bean>  
 	
+	<bean id="crearGrupoCtl" class="com.proint1.udea.administracion.ctl.CrearGrupoCtl" scope="prototype"> 
+ 		<property name="grupoOpInt" ref="grupoOpInt"></property>    
+	</bean> 
+	
+	<bean id="editarGrupoCtl" class="com.proint1.udea.administracion.ctl.EditarGrupoCtl" scope="prototype"> 
+ 		<property name="grupoOpInt" ref="grupoOpInt"></property>    
+	</bean>
+	
 	<bean id="editarCursoCtl" class="com.proint1.udea.administracion.ctl.EditarCursoCtl" scope="prototype"> 
  		<property name="cursoOpInt" ref="cursoOpInt"></property>    
 	</bean>

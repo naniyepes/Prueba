@@ -121,6 +121,7 @@ public class AdministrarCursosCtl extends GenericForwardComposer implements List
 		{
 			CursoDTO dto =(CursoDTO) lsxCurso.getModel().getElementAt(lsxCurso.getSelectedIndex());
 			
+			logger.info(dto.getIdn());
 			
 			HashMap<String, Object> params = new HashMap<String, Object>();
 			params.put("dtoCurso", dto);		

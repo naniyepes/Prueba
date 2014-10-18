@@ -16,6 +16,8 @@ import com.proint1.udea.administracion.ngc.GrupoOperacionesIntDAO;
 import com.proint1.udea.administracion.dto.SumaryGruposDTO;
 import com.proint1.udea.administracion.entidades.academico.Curso;
 import com.proint1.udea.administracion.entidades.academico.Grupo;
+import com.proint1.udea.administracion.entidades.academico.Semestre;
+import com.proint1.udea.administracion.entidades.academico.SemestreCurso;
 import com.proint1.udea.administracion.entidades.dependencias.DependenciaAcademica;
 
 /**
@@ -36,9 +38,9 @@ public class GrupoOperacionesDAO extends HibernateDaoSupport implements GrupoOpe
 
 		List <GrupoDTO> grupoListDTO = new ArrayList<GrupoDTO>();
 		for (Grupo grupo : response) {
-			GrupoDTO dto = new GrupoDTO();
-			dto.setAgno(grupo.getSemestreCurso().getSemestre().getAgno());
-			dto.setPeriodo(grupo.getSemestreCurso().getSemestre().getPeriodo());
+			GrupoDTO dto = new GrupoDTO();	
+			dto.setIdn(grupo.getIdn());
+			dto.setAgno(grupo.getSemestreCurso().getSemestre().getAgno()  + "-" + grupo.getSemestreCurso().getSemestre().getPeriodo());			
 			dto.setIdCurso(grupo.getSemestreCurso().getCurso().getIdCurso());
 			dto.setNombre(grupo.getSemestreCurso().getCurso().getNombre());
 			dto.setNumeroGrupo(grupo.getNumeroGrupo());
@@ -52,16 +54,23 @@ public class GrupoOperacionesDAO extends HibernateDaoSupport implements GrupoOpe
 	@Override
 	public String almacenarGrupo(GrupoDTO grupoDTO){
 
-		Curso curso = new Curso();		
-		//curso.setDependenciaAcademicaIDN(grupoDTO.getIdnDependencia());
-		curso.setIdCurso(grupoDTO.getIdCurso());
-		curso.setNombre(grupoDTO.getNombre());			
+		Grupo grupo = new Grupo();	
+		
+		String hql = "Select semcur from SemestreCurso semcur, Curso cur where semcur.cursoIDN = cur.idn and cur.nombre = ?";
+		Query query = getSession().createQuery(hql);
+		query.setParameter(0, grupoDTO.getNombre());
+		List<SemestreCurso> response = (ArrayList<SemestreCurso>) query.list();
+		
+		grupo.setHorario(grupoDTO.getHorario());
+		grupo.setNumeroGrupo(grupoDTO.getNumeroGrupo());
+		grupo.setSemestreCursoIdn(response.get(0).getIdn());		
+		
 		Session session = null;
 		Transaction tx = null;
 		try{
 			session = getSession();
 			tx = session.beginTransaction();
-			session.save(curso);			
+			session.save(grupo);			
 			tx.commit();
 			return "OK";
 		}catch(HibernateException e){
@@ -97,25 +106,34 @@ public class GrupoOperacionesDAO extends HibernateDaoSupport implements GrupoOpe
 
 	@Override
 	public void editarGrupo(GrupoDTO grupoDTO){
-//		
-		String hql = "update from Curso set idCurso = ?, nombre = ?, dependenciaAcademicaIDN = ? where idn= ?";
+		
+		Grupo grupo = new Grupo();	
+		
+		String hql = "Select semcur from SemestreCurso semcur, Curso cur where semcur.cursoIDN = cur.idn and cur.nombre = ?";
 		Query query = getSession().createQuery(hql);
-		query.setParameter(0, grupoDTO.getIdCurso());
-		//query.setParameter(1, grupoDTO.getNombreCurso());
-		//query.setParameter(2, grupoDTO.getIdnDependencia());
-		query.setParameter(3,  grupoDTO.getIdn());
-		query.executeUpdate();
+		query.setParameter(0, grupoDTO.getNombre());
+		List<SemestreCurso> response = (ArrayList<SemestreCurso>) query.list();
+		
+		
+		String hql1 = "update from Grupo set numeroGrupo = ?, horario = ?, semestreCursoIdn = ? where idn= ?";
+		Query query1 = getSession().createQuery(hql1);
+		query1.setParameter(0, grupoDTO.getNumeroGrupo());
+		query1.setParameter(1, grupoDTO.getHorario());
+		query1.setParameter(2, response.get(0).getIdn());
+		query1.setParameter(3,  grupoDTO.getIdn());
+		query1.executeUpdate();
 
 	}
 
-/*	@Override
-	public List<DependenciaAcademica> getDependenciaList() {
-
-		String hql = "Select dep from DependenciaAcademica dep";
+	
+	//Lista los cursos activos por semestre
+	@Override
+	public List<Curso> getSemCursoList() {
+		String hql = "Select cur from Curso cur, SemestreCurso semcur where cur.idn = semcur.cursoIDN ";
 		Query query = getSession().createQuery(hql);
-		List<DependenciaAcademica> response = (ArrayList<DependenciaAcademica>) query.list();			
+		List<Curso> response = (ArrayList<Curso>) query.list();			
 		return response;
-	}*/
+	}
 
 
 }
