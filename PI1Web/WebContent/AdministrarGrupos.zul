@@ -10,12 +10,11 @@
 			<toolbarbutton id="btnEliminar" label="Eliminar" image="/img/eliminar.ico"></toolbarbutton>
 		</toolbar>
 
-		<listbox id="lsxGrupo" mold="paging" pageSize="10">
+		<listbox id="lsxGrupo" mold="paging" pageSize="5">
 			<listhead>
 				<listheader label="Semestre" width="80px"></listheader>
-				<listheader label="Per" width="80px"></listheader>
 				<listheader label="ID Curso" width="80px"></listheader>
-				<listheader label="Nombre Curso" width="80px"></listheader>
+				<listheader label="Nombre Curso" width="150px"></listheader>
 				<listheader label="Numero Grupo" width="80px"></listheader>
 				<listheader label="Horario" width="80px"></listheader>
 			</listhead>

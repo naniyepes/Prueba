@@ -72,7 +72,7 @@ public class ActDocenteGrupoCtl extends GenericForwardComposer implements Listit
 	private void definirModelo() {
 		List<RegistrarActividadDTO> listaActividades = actDocenteGrupoInt.getActividadesList(sumaryGruposDto.getIdn());
 		if(listaActividades==null){
-			listaActividades = new ArrayList<>();
+			listaActividades = new ArrayList<RegistrarActividadDTO>();
 		}
 		ListModel model = new ListModelList(listaActividades);
 		lsxActividades.setModel(model);

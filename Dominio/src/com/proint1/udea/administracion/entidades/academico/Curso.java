@@ -189,4 +189,8 @@ public class Curso implements java.io.Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	public String toString() {
+        return (this.getIdCurso() +" " + this.getNombre() );
+    }
 }

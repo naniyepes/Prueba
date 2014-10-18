@@ -8,11 +8,11 @@
 	            <listheader label="Dependencia" width="150px"></listheader>
 	            <listheader label="Semestre" width="80px"></listheader>
 	            <listheader label="Código Curso" width="100px"></listheader>
-	            <listheader label="Nombre Curso" width="300px"></listheader>
+	            <listheader label="Nombre Curso" width="200px"></listheader>
 	            <listheader label="Modalidad Curso" width="110px"></listheader>
 	            <listheader label="Número Grupo" width="100px" align="center"></listheader>
 	            <listheader label="Horario" width="80px"></listheader>
-	            <listheader label="Administrar" width="80px"></listheader>
+	            <listheader label="Administrar" width="100px"></listheader>
 		 	</listhead>
 	        
          </listbox>

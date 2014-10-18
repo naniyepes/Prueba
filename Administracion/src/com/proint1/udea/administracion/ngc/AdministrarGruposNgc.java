@@ -7,6 +7,8 @@ import org.apache.log4j.Logger;
 
 import com.proint1.udea.administracion.dao.GrupoDTO;
 import com.proint1.udea.administracion.dao.GrupoOperacionesDAO;
+import com.proint1.udea.administracion.entidades.academico.Curso;
+import com.proint1.udea.administracion.entidades.academico.Semestre;
 
 /**
  * Clase de Negocio para realizar la administración de los grupos
@@ -59,13 +61,13 @@ public class AdministrarGruposNgc implements GrupoOperacionesIntDAO,Serializable
 		grupoOperacionesDAO.editarGrupo(grupoDTO);
 	}
 
-/*	@Override
-	public List<DependenciaAcademica> getDependenciaList() {
-		logger.info("consultando dependencias");
-		return grupoOperacionesDAO.getDependenciaList();
-	}*/
-
-
+	
+	//Lista los cursos activos por semestre 
+	@Override
+	public List<Curso> getSemCursoList() {
+		logger.info("consultando cursos");
+		return grupoOperacionesDAO.getSemCursoList();
+	}
 	public GrupoOperacionesDAO getGrupoOperacionesDAO() {
 		return grupoOperacionesDAO;
 	}
@@ -74,6 +76,10 @@ public class AdministrarGruposNgc implements GrupoOperacionesIntDAO,Serializable
 	public void setGrupoOperacionesDAO(GrupoOperacionesDAO grupoOperacionesDAO) {
 		this.grupoOperacionesDAO = grupoOperacionesDAO;
 	}
+
+
+	
+
 
 	
 	
