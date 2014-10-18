@@ -17,10 +17,7 @@ public class GrupoDTO implements Serializable {
 	 */
 
 	/**Año* el 2014 */
-	private int agno;
-	
-	/**Periodo ejemplo: 1 */
-	private int periodo;
+	private String agno;
 	
 	/**Identificador unico del grupo*/
 	private long idn;
@@ -37,21 +34,16 @@ public class GrupoDTO implements Serializable {
 	/**Nombre del curso	 **/
 	private String nombre;
 
-	public int getAgno() {
+	
+
+	public String getAgno() {
 		return agno;
 	}
 
-	public void setAgno(int agno) {
+	public void setAgno(String agno) {
 		this.agno = agno;
 	}
 
-	public int getPeriodo() {
-		return periodo;
-	}
-
-	public void setPeriodo(int periodo) {
-		this.periodo = periodo;
-	}
 
 	public long getIdn() {
 		return idn;

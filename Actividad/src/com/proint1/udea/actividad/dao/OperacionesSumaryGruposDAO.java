@@ -40,6 +40,7 @@ public class OperacionesSumaryGruposDAO extends HibernateDaoSupport implements O
 			sumaryGruposDTO.setNombreCurso(docenteGrupo.getGrupo().getSemestreCurso().getCurso().getNombre());
 			sumaryGruposDTO.setModalidadCurso(docenteGrupo.getGrupo().getSemestreCurso().getModalidadCurso().getDescripcion());
 			sumaryGruposDTO.setGrupoNumero(docenteGrupo.getGrupo().getNumeroGrupo());
+			sumaryGruposDTO.setHorario(docenteGrupo.getGrupo().getHorario());
 			sumaryGruposDTOList.add(sumaryGruposDTO);
 		}
 		
@@ -67,56 +68,5 @@ public class OperacionesSumaryGruposDAO extends HibernateDaoSupport implements O
 		}
 		
 		return regActividadDTOList;
-		
 	}
-	
-//	
-//	@Override
-//	public List<SumaryGruposDTO> getSumariGrupoDTOPorDocenteIdnNativo(long idnDocente) {
-//
-//		ArrayList<SumaryGruposDTO> sumaryGruposDTOList = new ArrayList<SumaryGruposDTO>();
-//
-//		StringBuffer sql = new StringBuffer();
-//		sql.append("select ");
-//		sql.append("PER.VR_PER_NOMBRECOMPLETO AS DOCENTE, ");
-//		sql.append("DEA.VR_DEP_NOMBRE AS DEPENDENCIA, ");
-//		sql.append("SEM.NB_SEM_AGNO AS AGNO, ");
-//		sql.append("SEM.NB_SEM_PERIODO AS SEMESTRE, ");
-//		sql.append("CURSO.VR_CUR_ID AS CODIGO_CURSO, ");
-//		sql.append("CURSO.VR_CUR_NOMBRE AS NOMBRE_CURSO, ");
-//		sql.append("MOC.VR_MCU_DESCRIPCION AS MODALIDAD_CURSO, ");
-//		sql.append("GR.VR_GPO_NUMERO AS GRUPO_NUMERO, ");
-//		sql.append("GR.VR_GPO_HORARIO AS HORARIO, ");
-//		sql.append("DG.NB_DOG_TIEMPOTOTAL AS TOTAL_TIEMPO ");
-//		sql.append("FROM TB_ACT_DOCENTEXGRUPO DG ");
-//		sql.append("INNER JOIN TB_ADM_GRUPO GR ON DG.NB_GPO_IDN = GR.NB_GPO_IDN "); 
-//		sql.append("INNER JOIN TB_ADM_SEMESTREXCURSO SEC ON SEC.NB_SCU_IDN = GR.NB_SCU_IDN ");
-//		sql.append("INNER JOIN TB_ADM_MODALIDAD_CURSO MOC ON MOC.VR_MCU_IDN = SEC.VR_MCU_IDN ");
-//		sql.append("INNER JOIN TB_ADM_CURSO CURSO ON CURSO.NB_CUR_IDN = SEC.NB_CUR_IDN ");
-//		sql.append("INNER JOIN TB_ADM_SEMESTRE SEM ON SEM.NB_SEM_IDN = SEC.NB_SCU_IDN ");
-//		sql.append("INNER JOIN TB_ADM_ESTADO_SEMESTRE ESTS ON ESTS.VR_ESM_CODIGO = SEM.VR_ESM_CODIGO ");
-//		sql.append("INNER JOIN TB_ADM_DEPENDENCIA_ACADEMICA DEA ON DEA.NB_DEP_IDN = SEM.NB_DEP_IDN ");
-//		sql.append("INNER JOIN TB_ADM_DOCENTE DOC ON DG.NB_DOC_IDN = DOC.NB_DOC_IDN ");
-//		sql.append("INNER JOIN TB_ADM_PERSONA PER ON DOC.NB_DOC_IDN = PER.NB_PER_IDN ");
-//		sql.append(" where DOC.NB_DOC_IDN =" + idnDocente);
-//		Query query = getSession().createSQLQuery(sql.toString());
-//
-//		List<Object[]> docenteGrupoList = query.list();
-//
-//		for (Object[] registro : docenteGrupoList) {
-//		
-//			SumaryGruposDTO sumaryGruposDTO = new SumaryGruposDTO();
-//			sumaryGruposDTO.setNombreDependencia(registro[1].toString());
-//			sumaryGruposDTO.setSemestre(registro[2].toString());
-//			sumaryGruposDTO.setCodigoCurso(registro[3].toString());
-//			sumaryGruposDTO.setNombreCurso(registro[4].toString());
-//			sumaryGruposDTO.setModalidadCurso(registro[5].toString());
-//			sumaryGruposDTO.setGrupoNumero(registro[6].toString());
-//			sumaryGruposDTOList.add(sumaryGruposDTO);
-//		}
-//
-//		return sumaryGruposDTOList;
-//	}
-	
-
 }

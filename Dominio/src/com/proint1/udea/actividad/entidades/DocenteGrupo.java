@@ -172,5 +172,6 @@ public class DocenteGrupo implements java.io.Serializable {
 	 */
 	public void setFechaActualizacion(Date fechaActualizacion) {
 		this.fechaActualizacion = fechaActualizacion;
+          //test
 	}
 }

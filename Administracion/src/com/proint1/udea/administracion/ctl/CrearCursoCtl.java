@@ -39,18 +39,7 @@ public class CrearCursoCtl extends GenericForwardComposer {
 	 */
 	public CrearCursoCtl() {
 		super();
-		//capturamos los parámetros enviados
-		cursoDTO = (CursoDTO) Executions.getCurrent().getArg().get("dtoCurso");
-       if(cursoDTO!=null){
-    	   String al = cursoDTO.getIdCurso();    	   
-    	   loadCurso();    	   
-       }
-	}
-
-	private void loadCurso() {
-		txtNombreCurso.setValue(cursoDTO.getNombreCurso());
-		txtIdCurso.setValue(cursoDTO.getIdCurso());
-		cmbDep.setValue(cursoDTO.getNombreDependencia());		
+		
 	}
 
 	public void doAfterCompose(Component comp) throws Exception {
@@ -71,13 +60,23 @@ public class CrearCursoCtl extends GenericForwardComposer {
 		 cursoDTO = new CursoDTO();
 		}
 		
-		cursoDTO.setIdCurso(txtIdCurso.getValue());
-		cursoDTO.setNombreCurso(txtNombreCurso.getValue());		
-		DependenciaAcademica dtodep =cmbDep.getSelectedItem().getValue();
-		cursoDTO.setIdnDependencia(dtodep.getIdn());
-		cursoOpInt.almacenarCurso(cursoDTO);
-		Messagebox.show("Curso guardado", "Informacion", Messagebox.OK,Messagebox.INFORMATION);
-		self.detach();
+		
+		if (txtNombreCurso.getValue()!="" && txtIdCurso.getValue()!="" && cmbDep.getSelectedItem()!=null )
+		{
+			
+			cursoDTO.setIdCurso(txtIdCurso.getValue());
+			cursoDTO.setNombreCurso(txtNombreCurso.getValue());		
+			DependenciaAcademica dtodep =cmbDep.getSelectedItem().getValue();
+			cursoDTO.setIdnDependencia(dtodep.getIdn());
+			
+			cursoOpInt.almacenarCurso(cursoDTO);
+			Messagebox.show("Curso guardado", "Informacion", Messagebox.OK,Messagebox.INFORMATION);
+			self.detach();
+		}
+		else
+		{
+			Messagebox.show("Debe ingresar todos los datos", "Informacion", Messagebox.OK,Messagebox.INFORMATION);
+		}
 	}
 
 

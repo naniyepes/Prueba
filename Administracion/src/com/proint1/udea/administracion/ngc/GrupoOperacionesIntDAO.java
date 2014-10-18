@@ -3,6 +3,8 @@ package com.proint1.udea.administracion.ngc;
 import java.util.List;
 
 import com.proint1.udea.administracion.dao.GrupoDTO;
+import com.proint1.udea.administracion.entidades.academico.Curso;
+import com.proint1.udea.administracion.entidades.academico.Semestre;
 import com.proint1.udea.administracion.entidades.dependencias.DependenciaAcademica;
 
 /**
@@ -36,6 +38,8 @@ public interface GrupoOperacionesIntDAO {
 	void editarGrupo(GrupoDTO grupoDTO);
 
 
-	//public List<DependenciaAcademica> getDependenciaList();
+	//Lista los cursos activos por semestre 
+	public List<Curso> getSemCursoList();
+	
 	
 }

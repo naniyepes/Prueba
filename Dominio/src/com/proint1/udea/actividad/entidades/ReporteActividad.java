@@ -38,7 +38,6 @@ public class ReporteActividad implements java.io.Serializable {
 	 */
 	public ReporteActividad() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	/**
 	 * @param tipoActividadIdn

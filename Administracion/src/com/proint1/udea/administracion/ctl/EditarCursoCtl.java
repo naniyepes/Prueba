@@ -21,7 +21,8 @@ public class EditarCursoCtl extends GenericForwardComposer {
 	Textbox txtIdCurso;
 	Textbox txtNombreCurso;
 	Combobox cmbDep;
-	Textbox txtIdn;
+	
+	long idnCurso;
 	
 	private static Logger logger=Logger.getLogger(AdministrarCursosCtl.class);
 	
@@ -42,14 +43,15 @@ public class EditarCursoCtl extends GenericForwardComposer {
         {
         	txtNombreCurso.setValue(cursoDTO.getNombreCurso());
     		txtIdCurso.setValue(cursoDTO.getIdCurso());
-    		txtIdn.setValue(Long.toString(cursoDTO.getIdn()));		
+    		idnCurso = cursoDTO.getIdn();    		
     		cmbDep.setValue(cursoDTO.getNombreDependencia());    
+    		
         }
         
             
    }
 	
-	public void onCreate() {
+	public void onCreate() {	
 		List<DependenciaAcademica> listaDependencia = cursoOpInt.getDependenciaList();		
 		ListModel model = new ListModelList(listaDependencia);
 		cmbDep.setModel(model);
@@ -58,16 +60,27 @@ public class EditarCursoCtl extends GenericForwardComposer {
 	
 	public void onClick$btnAceptar(Event ev) {	
 		
-		CursoDTO cursoDTO = new CursoDTO();
-		cursoDTO.setIdCurso(txtIdCurso.getValue());
-		cursoDTO.setNombreCurso(txtNombreCurso.getValue());
-		DependenciaAcademica dtodep =cmbDep.getSelectedItem().getValue();
-		cursoDTO.setIdnDependencia(dtodep.getIdn());
-		cursoDTO.setIdn(Long.parseLong(txtIdn.getValue()));
-		cursoOpInt.editarCurso(cursoDTO);
-		Messagebox.show("Curso editado", "Informacion", Messagebox.OK, Messagebox.INFORMATION);
 		
-		self.detach();
+		
+		
+		if (txtNombreCurso.getValue()!="" && txtIdCurso.getValue()!="" && cmbDep.getSelectedItem()!=null )
+		{
+			
+			CursoDTO cursoDTO = new CursoDTO();
+			cursoDTO.setIdCurso(txtIdCurso.getValue());
+			cursoDTO.setNombreCurso(txtNombreCurso.getValue());
+			DependenciaAcademica dtodep =cmbDep.getSelectedItem().getValue();
+			cursoDTO.setIdnDependencia(dtodep.getIdn());
+			cursoDTO.setIdn(idnCurso);
+			cursoOpInt.editarCurso(cursoDTO);
+			Messagebox.show("Curso editado", "Informacion", Messagebox.OK, Messagebox.INFORMATION);
+			
+			self.detach();
+		}
+		else
+		{
+			Messagebox.show("Debe ingresar todos los datos", "Informacion", Messagebox.OK,Messagebox.INFORMATION);
+		}
 		
 	}
 	
