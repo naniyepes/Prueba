@@ -2,7 +2,6 @@ package com.proint1.udea.administracion.ctl;
 
 import java.io.Serializable;
 
-import org.zkoss.zhtml.Label;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zul.Tabbox;
 import org.zkoss.zul.Textbox;

@@ -1,20 +1,41 @@
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
 <zk>
-	<window title="Resumen Actividades" border="none" width="600px" apply="${actDocenteGrupoCtl}">
+	<window title="Administrar Actividades" border="normal" width="1000px" apply="${actDocenteGrupoCtl}" maximizable="true" mode="overlapped" closable="true">
+		<div align="center">
+			<borderlayout>
+				<north></north>
+				<center>
+					<div align="center">
+						<hlayout spacing="20" valign="middle" height="50">
+							<label value="Usuario" width="150px" />
+							<textbox  id="usuarioTextBox" type="text" width="150px" tabindex="1"></textbox>
+						</hlayout>
+						<hlayout>
+							<label value="Contraseña" width="150px" />
+							<textbox id="passwordTextBox" type="password" width="150px" tabindex="2"></textbox>
+						</hlayout>
+					</div>
+				</center>
+				<south></south>
+			</borderlayout>
+		</div>
 		<toolbar>
-			<toolbarbutton id="btnAceptar" label="Crear" image="/img/agregar.ico"></toolbarbutton>
+			<toolbarbutton id="btnCrear" label="Crear" image="/img/agregar.ico"></toolbarbutton>
 		</toolbar>
 
-		<listbox id="lsxActividades" mold="paging" pageSize="8">
+		<listbox id="lsxActividades" mold="paging" pageSize="10" emptyMessage="No hay actividades registradas">
 			<listhead>
-				<listheader label="IDN" width="80px"></listheader>
-				<listheader label="Tipo Actividad" width="80px"></listheader>
-				<listheader label="Fecha" width="200px"></listheader>
-				<listheader label="Descripción" width="200px"></listheader>
+			    <listheader label="Nro" width="40px" align="right" ></listheader>
+				<listheader label="Fecha" width="100px"></listheader>
+				<listheader label="Tipo Actividad" width="200px"></listheader>
+				<listheader label="Descripción" width="300px"></listheader>
+                <listheader label="Editar" width="80px"></listheader>
+                <listheader label="Eliminar" width="80px"></listheader>
 			</listhead>
 
 		</listbox>
 
 	</window>
+	
 </zk>

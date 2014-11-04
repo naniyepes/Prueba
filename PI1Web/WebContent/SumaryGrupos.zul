@@ -1,23 +1,18 @@
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
 <zk>
-	<window title="Registro Actividades" border="none" width="1200px" apply="${sumaryGrupoCtl}">
-
-		 	<toolbar>
-			 	<toolbarbutton id="btnVerResumen" label="Ver Resumen" image="/img/agregar.ico"></toolbarbutton>
-				<toolbarbutton id="btnRegistrarActividad" label="Registrar Actividad" image="/img/editar.ico"></toolbarbutton>		 		
-		 	</toolbar>
-		 <listbox id="listaGrupos" mold="paging" pageSize="10">
+	<window title="Registro Actividades" border="none" width="1300px" apply="${sumaryGrupoCtl}">
+		 <listbox id="listaGrupos" mold="paging" pageSize="10" emptyMessage="No hay grupos registrados">
 		 	<listhead>
 		 	    <listheader label="Nro" width="40px" align="right" ></listheader>
 	            <listheader label="Dependencia" width="150px"></listheader>
 	            <listheader label="Semestre" width="80px"></listheader>
-	            <listheader label="Codigo Curso" width="100px"></listheader>
-	            <listheader label="Nombre Curso" width="300px"></listheader>
-	            <listheader label="Modalidad Curso" width="100px"></listheader>
+	            <listheader label="Código Curso" width="100px"></listheader>
+	            <listheader label="Nombre Curso" width="200px"></listheader>
+	            <listheader label="Modalidad Curso" width="110px"></listheader>
 	            <listheader label="Número Grupo" width="100px" align="center"></listheader>
-	           <!-- <listheader label="Horario" width="80px"></listheader>-->
-	            <!--<listheader label="Total Tiempo" width="80px" align="right"></listheader>-->
+	            <listheader label="Horario" width="80px"></listheader>
+	            <listheader label="Administrar" width="100px"></listheader>
 		 	</listhead>
 	        
          </listbox>

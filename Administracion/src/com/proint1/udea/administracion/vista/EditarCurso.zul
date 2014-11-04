@@ -23,8 +23,7 @@
 				<row>
 					<label value="Dependencia Academica"
 						width="150px" />
-					<combobox id="cmbDep" width="150px"
-						readonly="true">
+					<combobox id="cmbDep" width="150px" readonly="true">
 					</combobox>
 
 				</row>
