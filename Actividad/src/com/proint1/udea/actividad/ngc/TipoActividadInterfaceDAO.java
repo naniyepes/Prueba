@@ -25,7 +25,9 @@ public interface TipoActividadInterfaceDAO {
 	 */
 	String crearTipoActividad(TipoActividad tipoActividad); 
 	
-	
-	
+	void eliminarTipoActividad(TipoActividad tipoActividad);
+
+
+	void editarTipoActividad(TipoActividad tipoActividad);
 	
 }

@@ -1,0 +1,20 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
+<zk>
+	<window title="Crear Curso" border="none" width="600px" apply="${administrarTipoActividadesCtl}">
+		<toolbar>
+			<toolbarbutton id="btnCrear" label="Crear" image="/img/agregar.ico"></toolbarbutton>
+			<toolbarbutton id="btnEditar" label="Editar" image="/img/editar.ico"></toolbarbutton>
+			<toolbarbutton id="btnEliminar" label="Eliminar" image="/img/eliminar.ico"></toolbarbutton>
+		</toolbar>
+
+		<listbox id="lsxTipoAct" mold="paging" pageSize="5">
+			<listhead>
+				<listheader label="Nombre" width="80px"></listheader>
+				<listheader label="Descripcion" width="80px"></listheader>
+			</listhead>
+
+		</listbox>
+
+	</window>
+</zk>

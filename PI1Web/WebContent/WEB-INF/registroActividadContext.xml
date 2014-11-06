@@ -8,12 +8,17 @@
 <!-- BEANS DE NEGOCIO -->	
 
 <!-- DAO TIPO DE ACTIVIDAD -->	
-<!-- <bean id="tipoActividadDao"     class="com.proint1.udea.actividad.dao.TipoActividadDAO">    <property name="sessionFactory" ref="factory"/> </bean> -->	
+<bean id="tipoActividadDao"     class="com.proint1.udea.actividad.dao.TipoActividadDAO">    <property name="sessionFactory" ref="factory"/> </bean>	
 <bean id="docenteGrupoDao"     class="com.proint1.udea.actividad.dao.DocenteGrupoDAO">    <property name="sessionFactory" ref="factory"/> </bean>
 <bean id="reporteActividadDAO"     class="com.proint1.udea.actividad.dao.ReporteActividadDAO">    <property name="sessionFactory" ref="factory"/> </bean>
+
 <bean id="operacionesSumaryGruposDAO"     class="com.proint1.udea.actividad.dao.OperacionesSumaryGruposDAO"> 
   <property name="sessionFactory" ref="factory"/>
   <property name="reporteActividadDAO" ref="reporteActividadDAO"></property>
+</bean>
+
+<bean id="docGrupoOperacionesDAO" class="com.proint1.udea.actividad.dao.DocGrupoOperacionesDAO">
+	   <property name="sessionFactory"> <ref bean="factory"  /></property>
 </bean>
 
 
@@ -26,6 +31,14 @@
 	
 	<bean id="actDocenteGrupoInt" class="com.proint1.udea.actividad.ngc.ActDocenteGrupoNgc">
 	    <property name="operacionesSumaryGruposDAO" ref="operacionesSumaryGruposDAO"></property>
+	</bean>
+	
+	<bean id="docGruposOpInt" class="com.proint1.udea.actividad.ngc.AdministrarDocGruposNgc">
+	    <property name="docGrupoOperacionesDAO" ref="docGrupoOperacionesDAO"></property>
+	</bean>
+	
+	<bean id="tipoActOpInt" class="com.proint1.udea.actividad.ngc.AdministrarTipoActividadNgc">
+	    <property name="tipoActividadDao" ref="tipoActividadDao"></property>
 	</bean>
 		
     <!-- BEANS PARA LOS CONTROLADORES -->		
@@ -40,5 +53,32 @@
 	<bean id="administrarActividadCtl" class="com.proint1.udea.actividad.ctl.AdminsitrarActividadCtl" scope="prototype"> 
  		<property name="operacionesInt" ref="actDocenteGrupoInt"></property>    
 	</bean>
+	
+	<bean id="administrarDocGruposCtl" class="com.proint1.udea.actividad.ctl.AdministrarDocGruposCtl" scope="prototype"> 
+ 		<property name="docGruposOpInt" ref="docGruposOpInt"></property>    
+	</bean>
+	
+	<bean id="crearDocGrupoCtl" class="com.proint1.udea.actividad.ctl.CrearDocGrupoCtl" scope="prototype"> 
+ 		<property name="docGruposOpInt" ref="docGruposOpInt"></property>    
+	</bean>
+	
+	<bean id="editarDocGrupoCtl" class="com.proint1.udea.actividad.ctl.EditarDocGrupoCtl" scope="prototype"> 
+ 		<property name="docGruposOpInt" ref="docGruposOpInt"></property>    
+	</bean>
+	
+	<bean id="administrarTipoActividadesCtl" class="com.proint1.udea.actividad.ctl.AdministrarTipoActividadesCtl" scope="prototype"> 
+ 		<property name="tipoActOpInt" ref="tipoActOpInt"></property>    
+	</bean>
+	
+	<bean id="crearTipoActividadCtl" class="com.proint1.udea.actividad.ctl.CrearTipoActividadCtl" scope="prototype"> 
+ 		<property name="tipoActOpInt" ref="tipoActOpInt"></property>    
+	</bean>
+	
+	<bean id="editarTipoActividadCtl" class="com.proint1.udea.actividad.ctl.EditarTipoActividadCtl" scope="prototype"> 
+ 		<property name="tipoActOpInt" ref="tipoActOpInt"></property>    
+	</bean>
+	
+	
+	
 	
 </beans>	

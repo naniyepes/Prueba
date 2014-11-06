@@ -1,0 +1,42 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
+<zk>
+	<window title="Editar Docente por Grupo" border="none" width="600px" apply="${editarDocGrupoCtl}">
+		<grid>
+			<columns>
+				<column />
+				<column />
+			</columns>
+			<rows>
+				<row>
+					<label value="ID Curso"
+						width="150px" />
+					<textbox id="txtIDCurso" width="150px" disabled="true" tabindex="1" />
+
+				</row>
+				<row>
+					<label value="Nombre Curso"
+						width="150px" />
+					<textbox id="txtNombreCurso" width="150px" disabled="true" tabindex="1" />
+
+				</row>
+				<row>
+					<label value="Docente"
+						width="150px" />
+					<combobox id="cmbDocente" width="150px" readonly="true" > </combobox>
+
+				</row>
+				<row>
+					<label value="Nro Grupo"
+						width="150px" />
+					<combobox id="cmbGrupo" width="150px" readonly="true" > </combobox>
+
+				</row>
+			</rows>
+		</grid>
+
+		<button id="btnAceptar" label="Aceptar"></button>
+		<button id="btnCancelar" label="Cancelar"></button>
+
+	</window>
+</zk>

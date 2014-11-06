@@ -80,4 +80,8 @@ public class EstadoSemestre implements java.io.Serializable {
 	public static EstadoSemestre buscarPorCodigomaryKey (String code) {
 		return enumMapByCode.get(code);
 	}
+	
+	public String toString() {
+        return this.getDescripcion();
+    }
 }

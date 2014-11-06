@@ -31,6 +31,7 @@ public class GrupoOperacionesDAO extends HibernateDaoSupport implements GrupoOpe
 	@Override
 	public List<GrupoDTO> getGrupoList() {
 
+		
 		//		String hql = "Select Curso.idCurso, Curso.nombre, DependenciaAcademica.nombre from Curso cr, DependenciaAcademica dep  where Curso.dependenciaAcademicaIDN = DependenciaAcademica.idn";
 		String hql = "Select gru from Grupo gru";
 		Query query = getSession().createQuery(hql);

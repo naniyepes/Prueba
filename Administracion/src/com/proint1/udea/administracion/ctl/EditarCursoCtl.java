@@ -14,6 +14,7 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
 
 import com.proint1.udea.administracion.dao.CursoDTO;
+import com.proint1.udea.administracion.dao.GrupoDTO;
 import com.proint1.udea.administracion.entidades.dependencias.DependenciaAcademica;
 import com.proint1.udea.administracion.ngc.CursoOperacionesIntDAO;
 
@@ -21,8 +22,7 @@ public class EditarCursoCtl extends GenericForwardComposer {
 	Textbox txtIdCurso;
 	Textbox txtNombreCurso;
 	Combobox cmbDep;
-	
-	long idnCurso;
+	Textbox txtIdn;
 	
 	private static Logger logger=Logger.getLogger(AdministrarCursosCtl.class);
 	
@@ -43,15 +43,14 @@ public class EditarCursoCtl extends GenericForwardComposer {
         {
         	txtNombreCurso.setValue(cursoDTO.getNombreCurso());
     		txtIdCurso.setValue(cursoDTO.getIdCurso());
-    		idnCurso = cursoDTO.getIdn();    		
+    		txtIdn.setValue(Long.toString(cursoDTO.getIdn()));		
     		cmbDep.setValue(cursoDTO.getNombreDependencia());    
-    		
         }
         
             
    }
 	
-	public void onCreate() {	
+	public void onCreate() {
 		List<DependenciaAcademica> listaDependencia = cursoOpInt.getDependenciaList();		
 		ListModel model = new ListModelList(listaDependencia);
 		cmbDep.setModel(model);
@@ -60,18 +59,18 @@ public class EditarCursoCtl extends GenericForwardComposer {
 	
 	public void onClick$btnAceptar(Event ev) {	
 		
-		
-		
-		
-		if (txtNombreCurso.getValue()!="" && txtIdCurso.getValue()!="" && cmbDep.getSelectedItem()!=null )
+		if (txtIdCurso.getValue()!="" && txtNombreCurso.getValue()!="" && cmbDep.getSelectedItem()!=null)
 		{
+
 			
 			CursoDTO cursoDTO = new CursoDTO();
 			cursoDTO.setIdCurso(txtIdCurso.getValue());
 			cursoDTO.setNombreCurso(txtNombreCurso.getValue());
+			
 			DependenciaAcademica dtodep =cmbDep.getSelectedItem().getValue();
+			
 			cursoDTO.setIdnDependencia(dtodep.getIdn());
-			cursoDTO.setIdn(idnCurso);
+			cursoDTO.setIdn(Long.parseLong(txtIdn.getValue()));
 			cursoOpInt.editarCurso(cursoDTO);
 			Messagebox.show("Curso editado", "Informacion", Messagebox.OK, Messagebox.INFORMATION);
 			
@@ -81,6 +80,7 @@ public class EditarCursoCtl extends GenericForwardComposer {
 		{
 			Messagebox.show("Debe ingresar todos los datos", "Informacion", Messagebox.OK,Messagebox.INFORMATION);
 		}
+		
 		
 	}
 	
