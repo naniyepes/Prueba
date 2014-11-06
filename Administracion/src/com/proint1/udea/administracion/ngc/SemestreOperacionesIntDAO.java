@@ -32,6 +32,11 @@ public interface SemestreOperacionesIntDAO {
 	//public List<SemestreDTO> buscarGrupo(String idGrupo);
 
 
+	/**
+	 * Elimina Semestre
+	 * @param Grupo
+	 * @return
+	 */
 	void eliminarSemestre(SemestreDTO semestreDTO);
 
 
