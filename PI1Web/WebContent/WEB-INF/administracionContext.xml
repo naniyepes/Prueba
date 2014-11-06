@@ -58,6 +58,9 @@
 	   <property name="sessionFactory"> <ref bean="factory"  /></property>
 	</bean>
 
+	<bean id="semestreOperacionesDAO" class="com.proint1.udea.administracion.dao.SemestreOperacionesDAO">
+	   <property name="sessionFactory"> <ref bean="factory"  /></property>
+	</bean>
   
     <!-- BEANS DE CAPA DE PRESENTACIÓN -->	
   
@@ -75,7 +78,10 @@
 	    <property name="grupoOperacionesDAO" ref="grupoOperacionesDAO"></property>
 	</bean>	
 	
-	
+	<bean id="semestresOpInt" class="com.proint1.udea.administracion.ngc.AdministrarSemestresNgc">
+	    <property name="semestreOperacionesDAO" ref="semestreOperacionesDAO"></property>
+	</bean>	
+		
     <!-- BEANS PARA LOS CONTROLADORES -->		
 
 	<bean id="consultarPersonaCtl" class="com.proint1.udea.administracion.ctl.ConsultarPersonaCtl" scope="prototype"> 
@@ -108,6 +114,18 @@
 	
 	<bean id="administrarGruposCtl" class="com.proint1.udea.administracion.ctl.AdministrarGruposCtl" scope="prototype"> 
  		<property name="grupoOpInt" ref="grupoOpInt"></property>    
+	</bean>
+	
+	<bean id="administrarSemestresCtl" class="com.proint1.udea.administracion.ctl.AdministrarSemestresCtl" scope="prototype"> 
+ 		<property name="semestresOpInt" ref="semestresOpInt"></property>    
+	</bean>
+	
+	<bean id="crearSemestreCtl" class="com.proint1.udea.administracion.ctl.CrearSemestreCtl" scope="prototype"> 
+ 		<property name="semestresOpInt" ref="semestresOpInt"></property>    
+	</bean>
+	
+	<bean id="editarSemestreCtl" class="com.proint1.udea.administracion.ctl.EditarSemestreCtl" scope="prototype"> 
+ 		<property name="semestresOpInt" ref="semestresOpInt"></property>    
 	</bean>
 	
 	<bean id="loginNgc" class="com.proint1.udea.administracion.ngc.LoginNgc">

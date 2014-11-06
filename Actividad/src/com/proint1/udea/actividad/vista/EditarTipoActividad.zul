@@ -1,0 +1,30 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
+<zk>
+	<window title="Crear Tipo Actividad" border="none" width="600px" apply="${editarTipoActividadCtl}">
+		<grid>
+			<columns>
+				<column />
+				<column />
+			</columns>
+			<rows>
+				<row>
+					<label value="Nombre" width="150px" />
+					<hlayout>
+						<textbox id="txtNombre" width="150px"
+							tabindex="1" />
+					</hlayout>
+				</row>
+				<row>
+					<label value="Descripcion" width="150px" />
+					<textbox id="txtDescripcion" width="150px"
+						tabindex="2" />
+				</row>
+			</rows>
+		</grid>
+
+		<button id="btnAceptar" label="Aceptar"></button>
+		<button id="btnCancelar" label="Cancelar"></button>
+
+	</window>
+</zk>

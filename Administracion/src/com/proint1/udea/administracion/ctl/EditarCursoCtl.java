@@ -14,6 +14,7 @@ import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
 
 import com.proint1.udea.administracion.dao.CursoDTO;
+import com.proint1.udea.administracion.dao.GrupoDTO;
 import com.proint1.udea.administracion.entidades.dependencias.DependenciaAcademica;
 import com.proint1.udea.administracion.ngc.CursoOperacionesIntDAO;
 
@@ -58,16 +59,28 @@ public class EditarCursoCtl extends GenericForwardComposer {
 	
 	public void onClick$btnAceptar(Event ev) {	
 		
-		CursoDTO cursoDTO = new CursoDTO();
-		cursoDTO.setIdCurso(txtIdCurso.getValue());
-		cursoDTO.setNombreCurso(txtNombreCurso.getValue());
-		DependenciaAcademica dtodep =cmbDep.getSelectedItem().getValue();
-		cursoDTO.setIdnDependencia(dtodep.getIdn());
-		cursoDTO.setIdn(Long.parseLong(txtIdn.getValue()));
-		cursoOpInt.editarCurso(cursoDTO);
-		Messagebox.show("Curso editado", "Informacion", Messagebox.OK, Messagebox.INFORMATION);
+		if (txtIdCurso.getValue()!="" && txtNombreCurso.getValue()!="" && cmbDep.getSelectedItem()!=null)
+		{
+
+			
+			CursoDTO cursoDTO = new CursoDTO();
+			cursoDTO.setIdCurso(txtIdCurso.getValue());
+			cursoDTO.setNombreCurso(txtNombreCurso.getValue());
+			
+			DependenciaAcademica dtodep =cmbDep.getSelectedItem().getValue();
+			
+			cursoDTO.setIdnDependencia(dtodep.getIdn());
+			cursoDTO.setIdn(Long.parseLong(txtIdn.getValue()));
+			cursoOpInt.editarCurso(cursoDTO);
+			Messagebox.show("Curso editado", "Informacion", Messagebox.OK, Messagebox.INFORMATION);
+			
+			self.detach();
+		}
+		else
+		{
+			Messagebox.show("Debe ingresar todos los datos", "Informacion", Messagebox.OK,Messagebox.INFORMATION);
+		}
 		
-		self.detach();
 		
 	}
 	

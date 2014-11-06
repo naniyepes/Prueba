@@ -191,5 +191,7 @@ public class Grupo implements Serializable {
 		this.semestreCursoIdn = semestreCurso == null ? null : semestreCurso.getIdn();
 	}
 	
-	
+	public String toString() {
+        return (this.getNumeroGrupo());
+    }
 }

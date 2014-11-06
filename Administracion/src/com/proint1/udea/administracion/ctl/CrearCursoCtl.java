@@ -71,13 +71,24 @@ public class CrearCursoCtl extends GenericForwardComposer {
 		 cursoDTO = new CursoDTO();
 		}
 		
-		cursoDTO.setIdCurso(txtIdCurso.getValue());
-		cursoDTO.setNombreCurso(txtNombreCurso.getValue());		
-		DependenciaAcademica dtodep =cmbDep.getSelectedItem().getValue();
-		cursoDTO.setIdnDependencia(dtodep.getIdn());
-		cursoOpInt.almacenarCurso(cursoDTO);
-		Messagebox.show("Curso guardado", "Informacion", Messagebox.OK,Messagebox.INFORMATION);
-		self.detach();
+		if (txtIdCurso.getValue()!="" && txtNombreCurso.getValue()!="" && cmbDep.getSelectedItem()!=null )
+		{
+
+			cursoDTO.setIdCurso(txtIdCurso.getValue());
+			cursoDTO.setNombreCurso(txtNombreCurso.getValue());		
+			DependenciaAcademica dtodep =cmbDep.getSelectedItem().getValue();
+			cursoDTO.setIdnDependencia(dtodep.getIdn());
+			cursoOpInt.almacenarCurso(cursoDTO);
+			Messagebox.show("Curso guardado", "Informacion", Messagebox.OK,Messagebox.INFORMATION);
+			self.detach();
+
+		}
+		else
+		{
+			Messagebox.show("Debe ingresar todos los datos", "Informacion", Messagebox.OK,Messagebox.INFORMATION);
+		}
+		
+		
 	}
 
 

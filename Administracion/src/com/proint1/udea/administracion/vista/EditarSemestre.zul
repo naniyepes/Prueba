@@ -1,0 +1,40 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
+<zk>
+	<window title="Crear Curso" border="none" width="600px"
+		apply="${editarSemestreCtl}">
+		<grid>
+			<columns>
+				<column />
+				<column />
+			</columns>
+			<rows>
+				<row>
+					<label value="Agno"
+						width="150px" />
+					<textbox id="txtAgno" width="150px" disabled="true" tabindex="1" />
+
+				</row>
+				<row>
+					<label value="Periodo" width="150px" />
+					<textbox id="txtPeriodo" width="150px" disabled="true" tabindex="2" />
+				</row>
+				<row>
+					<label value="Estado Semestre"
+						width="150px" />
+					<combobox id="cmbEstSem" width="150px" readonly="true" > </combobox>
+				</row>
+				<row>
+					<label value="Dependencia"
+						width="150px" />
+					<textbox id="txtDependencia" width="150px" disabled="true" tabindex="1" />
+
+				</row>
+			</rows>
+		</grid>
+
+		<button id="btnAceptar" label="Aceptar"></button>
+		<button id="btnCancelar" label="Cancelar"></button>
+
+	</window>
+</zk>

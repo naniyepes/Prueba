@@ -1,0 +1,24 @@
+<!--Al momento de cargar la vista busca el controlador dentro de los recursos de Sprint-->
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk>
+	<window title="Administración Semestres" border="none" width="1200px" apply="${administrarSemestresCtl}">
+		
+
+		<toolbar>
+			<toolbarbutton id="btnCrear" label="Crear" image="/img/agregar.ico"></toolbarbutton>
+			<toolbarbutton id="btnEditar" label="Editar" image="/img/editar.ico"></toolbarbutton>
+			<toolbarbutton id="btnEliminar" label="Eliminar" image="/img/eliminar.ico"></toolbarbutton>
+		</toolbar>
+
+		<listbox id="lsxSemestre" mold="paging" pageSize="5">
+			<listhead>
+				<listheader label="Año" width="80px"></listheader>
+				<listheader label="Periodo" width="80px"></listheader>
+				<listheader label="Estado Semestre" width="150px"></listheader>
+				<listheader label="Dependencia" width="80px"></listheader>
+			</listhead>
+
+		</listbox>
+
+	</window>
+</zk>

@@ -57,4 +57,8 @@ public class Docente extends Persona {
 	public void setRegistroProfesional(String registroProfesional) {
 		this.registroProfesional = registroProfesional;
 	}
+	
+	public String toString() {
+        return (this.getNombreCompleto());
+    }
 }
