@@ -54,6 +54,23 @@ public class TipoActividadDAO extends HibernateDaoSupport implements TipoActivid
 		}
 		
 	}
-	
 
+	@Override
+	public void eliminarTipoActividad(TipoActividad tipoActividad) {
+		String hql = "delete from TipoActividad where nbTacIdn=:parCursoIdn";
+		Query query = getSession().createQuery(hql);
+		query.setParameter("parCursoIdn", tipoActividad.getNbTacIdn());
+		query.executeUpdate();	
+		
+	}
+
+	@Override
+	public void editarTipoActividad(TipoActividad tipoActividad) {
+		String hql1 = "update from TipoActividad set nombre = ?, descripcion = ? where nbTacIdn= ?";
+		Query query1 = getSession().createQuery(hql1);
+		query1.setParameter(0, tipoActividad.getNombre());
+		query1.setParameter(1, tipoActividad.getDescripcion());
+		query1.setParameter(2, tipoActividad.getNbTacIdn());
+		query1.executeUpdate();		
+	}
 }

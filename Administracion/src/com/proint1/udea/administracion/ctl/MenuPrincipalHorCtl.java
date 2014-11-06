@@ -71,7 +71,7 @@ public class MenuPrincipalHorCtl implements Serializable {
 	@Command
 	public void admSemestresLink(){
 		if(validarUsuario()){
-			agregarTab("Administar Semestres", "ads1", "SumarySemestres.zul",null);
+			agregarTab("Administar Semestres", "ads1", "AdministrarSemestres.zul",null);
 		}
 	}
 	
@@ -89,6 +89,19 @@ public class MenuPrincipalHorCtl implements Serializable {
 		}
 	}
 	
+	@Command
+	public void admDocGruposLink(){
+		if(validarUsuario()){
+			agregarTab("Administar Docentes por Grupo", "admdg1", "AdministrarDocGrupos.zul",null);
+		}
+	}
+	
+	@Command
+	public void admTipoActividadesLink(){
+		if(validarUsuario()){
+			agregarTab("Administar Tipo Actividades", "admta1", "AdministrarTipoActividades.zul",null);
+		}
+	}
 
 	/**
 	 * Valida si hay un docente activo en la aplicación

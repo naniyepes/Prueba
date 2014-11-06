@@ -30,6 +30,8 @@
 							<menuitem label="Administrar Semestres" onClick="@command('admSemestresLink')" />
 							<menuitem label="Administrar Cursos"  onClick="@command('admCursosLink')"></menuitem>
 							<menuitem label="Administrar Grupos" onClick="@command('admGruposLink')"></menuitem>
+							<menuitem label="Administrar Docentes por Grupo" onClick="@command('admDocGruposLink')"></menuitem>
+							<menuitem label="Administrar Tipo Actividades" onClick="@command('admTipoActividadesLink')"></menuitem>
 						</menupopup>
 					</menu>
 				</menupopup>
