@@ -64,6 +64,17 @@ public class CrearDocGrupoCtl extends GenericForwardComposer {
 		ListModel model1 = new ListModelList(listaDocente);
 		cmbDocente.setModel(model1);	
 	}
+	
+	public void onSelect$cmbCurso(Event ev){
+		if (cmbCurso.getSelectedItem()!=null )
+		{
+			Curso curso = cmbCurso.getSelectedItem().getValue();
+			List<Grupo> listaGrupo = docGruposOpInt.getGrupoList(curso.getNombre());		
+			ListModelList model2 = new ListModelList(listaGrupo);
+			model2.addSelection(model2.get(0));
+			cmbGrupo.setModel(model2);
+		}
+	}
 
 	public void onClick$btnValidar(Event ev) {
 		if (cmbCurso.getSelectedItem()!=null )
