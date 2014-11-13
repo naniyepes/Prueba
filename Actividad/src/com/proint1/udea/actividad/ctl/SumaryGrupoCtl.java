@@ -122,7 +122,8 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements ListitemRe
 		btnAdministrar.addEventListener(Events.ON_CLICK, new EventListener<Event>() {
 			@Override
 			public void onEvent(Event arg0) throws Exception {
-				administrarActividades();
+				Listitem liSelected = (Listitem)arg0.getTarget().getParent().getParent();
+				administrarActividades(liSelected);
 			}
 		});
 		
@@ -144,8 +145,9 @@ public class SumaryGrupoCtl extends GenericForwardComposer implements ListitemRe
 	/**
 	 * Administra las actividades de un registro seleccionado
 	 */
-	public void administrarActividades(){
-		SumaryGruposDTO dto =(SumaryGruposDTO) listaGrupos.getModel().getElementAt(listaGrupos.getSelectedItem().getIndex());
+	public void administrarActividades(Listitem liSelected){
+//		SumaryGruposDTO dto =(SumaryGruposDTO) listaGrupos.getModel().getElementAt(listaGrupos.getSelectedItem().getIndex());
+		SumaryGruposDTO dto =(SumaryGruposDTO) listaGrupos.getModel().getElementAt(liSelected.getIndex());
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put("dtoSumaryGrupos", dto);		
 		java.io.InputStream zulInput = this.getClass().getClassLoader().getResourceAsStream("com/proint1/udea/actividad/vista/ActDocenteGrupo.zul") ;

@@ -9,7 +9,6 @@ import org.zkoss.zul.Textbox;
 
 import com.proint1.udea.administracion.PersonaEjemplo;
 import com.proint1.udea.administracion.ngc.PersonaInt;
-import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
 
 public class CrearPersonaCtl extends GenericForwardComposer {
 	Textbox txtNombre;
