@@ -11,6 +11,7 @@ import org.zkoss.zk.ui.Component;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Center;
 import org.zkoss.zul.Tabbox;
 import org.zkoss.zul.Textbox;
 
@@ -33,6 +34,9 @@ public class PrincipalCtl implements Serializable{
 	@Wire 
 	Tabbox tb_tabbox;
 	
+	@Wire 
+	Center center;
+	
 	@Wire
 	Textbox nombreUsuario;
 	
@@ -41,6 +45,7 @@ public class PrincipalCtl implements Serializable{
 		Selectors.wireComponents(view, this, false);
 		//Se agrega referencia del tb_tabbox contenedor de la app
 		Sessions.getCurrent().setAttribute("tb_tabboxCtl", tb_tabbox);
+		Sessions.getCurrent().setAttribute("center", center);
 		Sessions.getCurrent().setAttribute("textboxUsuario", nombreUsuario);
 	}
 	

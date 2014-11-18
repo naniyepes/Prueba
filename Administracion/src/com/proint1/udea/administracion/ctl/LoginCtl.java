@@ -7,12 +7,14 @@ import org.zkoss.bind.annotation.Command;
 import org.zkoss.bind.annotation.ContextParam;
 import org.zkoss.bind.annotation.ContextType;
 import org.zkoss.zk.ui.Component;
+import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
 import org.zkoss.zk.ui.select.annotation.WireVariable;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Textbox;
+import org.zkoss.zul.Window;
 
 import com.proint1.udea.administracion.entidades.seguridad.Usuario;
 import com.proint1.udea.administracion.entidades.terceros.Docente;
@@ -33,6 +35,8 @@ public class LoginCtl extends GenericForwardComposer implements Serializable {
 	Textbox usuarioTextBox;
 	@Wire
 	Textbox passwordTextBox;
+	@Wire
+	Window win;
 	
 	/**Dao para el login*/
 	@WireVariable
@@ -88,6 +92,10 @@ public class LoginCtl extends GenericForwardComposer implements Serializable {
 			WebSessionAccesor.getUsuarioTextbox().setValue("Usuario: " + usuarioProy.getNombreCompleto());
 			WebSessionAccesor.getUsuarioTextbox().setDisabled(true);
 			Messagebox.show("Autenticación exitosa, favor seleccionar nuevamente la opción requerida","Validación exitosa",Messagebox.OK,Messagebox.INFORMATION);
+					
+//			win.getParent().getParent().getParent().setVisible(false);
+			win.getParent().getParent().getParent().detach();
+			Sessions.getCurrent().setAttribute("tb_tabboxCtl", null);
 		}
 	}
 

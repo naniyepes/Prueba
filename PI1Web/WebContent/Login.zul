@@ -1,6 +1,6 @@
 <?page title="Login" contentType="text/html;charset=UTF-8"?>
 <zk>
-	<window title="Login" border="none" height="300px"  width="500px" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('com.proint1.udea.administracion.ctl.LoginCtl')">
+	<window id="win" title="Login" border="none" height="300px"  width="500px" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('com.proint1.udea.administracion.ctl.LoginCtl')">
 	<div height="200px" width="500px">
 		<borderlayout>
 			<north border="0">
