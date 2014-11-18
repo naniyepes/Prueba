@@ -23,7 +23,7 @@
 			</div>
 		</north>
 		
-		<center >
+		<center id="center" >
 			<tabbox id="tb_tabbox" />
 		</center>
 		
