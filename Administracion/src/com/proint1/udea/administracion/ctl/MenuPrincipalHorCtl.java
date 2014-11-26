@@ -14,6 +14,7 @@ import org.zkoss.zk.ui.Executions;
 import org.zkoss.zk.ui.Sessions;
 import org.zkoss.zk.ui.select.Selectors;
 import org.zkoss.zk.ui.select.annotation.Wire;
+import org.zkoss.zul.Center;
 import org.zkoss.zul.Messagebox;
 import org.zkoss.zul.Tab;
 import org.zkoss.zul.Tabbox;
@@ -163,8 +164,17 @@ public class MenuPrincipalHorCtl implements Serializable {
 	 * @return
 	 */
 	Tabbox getTb_tabbox() {
+		System.out.println("getTb_tabbox");
 		if(tb_tabbox==null){
+			
 			tb_tabbox = (Tabbox)Sessions.getCurrent().getAttribute("tb_tabboxCtl");
+			
+		}	else if(tb_tabbox.getParent() == null){			
+				
+				tb_tabbox = new Tabbox();
+				Center c = (Center)Sessions.getCurrent().getAttribute("center");
+				c.appendChild(tb_tabbox);
+			
 		}
 		return tb_tabbox;
 	}
