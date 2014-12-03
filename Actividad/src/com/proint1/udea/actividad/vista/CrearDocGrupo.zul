@@ -12,7 +12,6 @@
 					<label value="Curso"
 						width="150px" />
 					<combobox id="cmbCurso" width="150px" readonly="true" > </combobox>
-					<button id="btnValidar" label="Validar Grupo"></button>
 
 				</row>
 				<row>

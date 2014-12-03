@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 
 import com.proint1.udea.actividad.dao.DocGrupoDTO;
 import com.proint1.udea.actividad.dao.DocGrupoOperacionesDAO;
+import com.proint1.udea.actividad.entidades.DocenteGrupo;
 import com.proint1.udea.administracion.entidades.academico.Curso;
 import com.proint1.udea.administracion.entidades.academico.Grupo;
 import com.proint1.udea.administracion.entidades.academico.Semestre;
@@ -80,6 +81,13 @@ public class AdministrarDocGruposNgc implements DocGrupoOperacionesIntDAO,Serial
 	}
 	
 
+
+	@Override
+	public List<DocenteGrupo> getDocGrupoNoReportList() {
+		return docGrupoOperacionesDAO.getDocGrupoNoReportList();
+	}
+	
+
 	public DocGrupoOperacionesDAO getDocGrupoOperacionesDAO() {
 		return docGrupoOperacionesDAO;
 	}
@@ -89,6 +97,7 @@ public class AdministrarDocGruposNgc implements DocGrupoOperacionesIntDAO,Serial
 			DocGrupoOperacionesDAO docGrupoOperacionesDAO) {
 		this.docGrupoOperacionesDAO = docGrupoOperacionesDAO;
 	}
+
 
 
 	

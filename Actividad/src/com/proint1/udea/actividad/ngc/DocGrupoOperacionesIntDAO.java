@@ -3,6 +3,7 @@ package com.proint1.udea.actividad.ngc;
 import java.util.List;
 
 import com.proint1.udea.actividad.dao.DocGrupoDTO;
+import com.proint1.udea.actividad.entidades.DocenteGrupo;
 import com.proint1.udea.administracion.entidades.academico.Curso;
 import com.proint1.udea.administracion.entidades.academico.Grupo;
 import com.proint1.udea.administracion.entidades.academico.Semestre;
@@ -48,6 +49,9 @@ public interface DocGrupoOperacionesIntDAO {
 	
 	//Lista los docentes activos  
 	public List<Grupo> getGrupoList(String nombreCurso);
+	
+	//Lista los docentesxgrupo que no han reportado actividades
+	public List<DocenteGrupo> getDocGrupoNoReportList();
 	
 	
 }

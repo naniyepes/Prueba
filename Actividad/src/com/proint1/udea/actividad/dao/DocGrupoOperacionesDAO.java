@@ -149,5 +149,15 @@ public class DocGrupoOperacionesDAO extends HibernateDaoSupport implements DocGr
 		query.setParameter(0, nombreCurso);
 		List<Grupo> response = (ArrayList<Grupo>) query.list();			
 		return response;
+	}
+
+
+	@Override
+	public List<DocenteGrupo> getDocGrupoNoReportList() {
+		
+		String hql = "Select gru from DocenteGrupo gru WHERE NOT EXISTS (Select reac from ReporteActividad reac where gru.idn = reac.docenteGrupoIdn)";
+		Query query = getSession().createQuery(hql);
+		List<DocenteGrupo> response = (ArrayList<DocenteGrupo>) query.list();
+		return response;
 	}	
 }

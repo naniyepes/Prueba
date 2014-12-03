@@ -1,7 +1,7 @@
 <?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
 <?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
 <zk>
-	<window title="Crear Curso" border="none" width="600px"
+	<window title="Crear Semestre" border="none" width="600px"
 		apply="${crearSemestreCtl}">
 		<grid>
 			<columns>

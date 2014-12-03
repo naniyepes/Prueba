@@ -98,9 +98,9 @@ public class GrupoOperacionesDAO extends HibernateDaoSupport implements GrupoOpe
 	@Override
 	public void eliminarGrupo(GrupoDTO grupoDTO){
 		
-		String hql = "delete from Curso where idn=:parCursoIdn";
+		String hql = "delete from Grupo where idn=:parGrupoIdn";
 		Query query = getSession().createQuery(hql);
-		query.setParameter("parCursoIdn", grupoDTO.getIdn());
+		query.setParameter("parGrupoIdn", grupoDTO.getIdn());
 		query.executeUpdate();			
 
 	}

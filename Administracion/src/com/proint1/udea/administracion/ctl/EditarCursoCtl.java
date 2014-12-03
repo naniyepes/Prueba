@@ -22,7 +22,7 @@ public class EditarCursoCtl extends GenericForwardComposer {
 	Textbox txtIdCurso;
 	Textbox txtNombreCurso;
 	Combobox cmbDep;
-	Textbox txtIdn;
+	long idnCurso;
 	
 	private static Logger logger=Logger.getLogger(AdministrarCursosCtl.class);
 	
@@ -43,7 +43,7 @@ public class EditarCursoCtl extends GenericForwardComposer {
         {
         	txtNombreCurso.setValue(cursoDTO.getNombreCurso());
     		txtIdCurso.setValue(cursoDTO.getIdCurso());
-    		txtIdn.setValue(Long.toString(cursoDTO.getIdn()));		
+    		idnCurso = cursoDTO.getIdn();		
     		cmbDep.setValue(cursoDTO.getNombreDependencia());    
         }
         
@@ -70,7 +70,7 @@ public class EditarCursoCtl extends GenericForwardComposer {
 			DependenciaAcademica dtodep =cmbDep.getSelectedItem().getValue();
 			
 			cursoDTO.setIdnDependencia(dtodep.getIdn());
-			cursoDTO.setIdn(Long.parseLong(txtIdn.getValue()));
+			cursoDTO.setIdn(idnCurso);
 			cursoOpInt.editarCurso(cursoDTO);
 			Messagebox.show("Curso editado", "Informacion", Messagebox.OK, Messagebox.INFORMATION);
 			

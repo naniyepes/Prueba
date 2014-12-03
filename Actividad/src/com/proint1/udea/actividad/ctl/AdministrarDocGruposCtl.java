@@ -22,6 +22,7 @@ import org.zkoss.zul.Toolbarbutton;
 import org.zkoss.zul.Window;
 
 import com.proint1.udea.actividad.dao.DocGrupoDTO;
+import com.proint1.udea.actividad.entidades.DocenteGrupo;
 import com.proint1.udea.actividad.ngc.DocGrupoOperacionesIntDAO;
 import com.proint1.udea.administracion.dto.SumaryGruposDTO;
 import com.proint1.udea.administracion.entidades.academico.Curso;
@@ -68,10 +69,17 @@ public class AdministrarDocGruposCtl extends GenericForwardComposer implements L
 		arg0.appendChild(lcNomCurso);
 		arg0.appendChild(lcNomDocente);
 		arg0.appendChild(lcNumGrupo);
+		
 	}
 
 	public void onClick$btnCrear(Event ev) {	
 
+		
+		DocGrupoOperacionesIntDAO docGruposOpInt = null;
+		
+		//List<DocenteGrupo> listaGrupos = docGruposOpInt.getDocGrupoNoReportList();
+		
+		
 		java.io.InputStream zulInput = this.getClass().getClassLoader().getResourceAsStream("com/proint1/udea/actividad/vista/CrearDocGrupo.zul") ;
 		java.io.Reader zulReader = new java.io.InputStreamReader(zulInput);
 		try {
