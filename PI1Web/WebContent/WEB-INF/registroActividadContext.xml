@@ -78,7 +78,19 @@
  		<property name="tipoActOpInt" ref="tipoActOpInt"></property>    
 	</bean>
 	
+	<bean id="reportesActividadesDAO" class="com.proint1.udea.actividad.dao.ReportesActividadesDAO">
+		<property name="sessionFactory">
+			<ref bean="factory" />
+		</property>
+	</bean>
 	
+	<bean id="reportesActividadesInt" class="com.proint1.udea.actividad.ngc.ReportesActividadesNgc">
+	    <property name="reportesActividadesDAO" ref="reportesActividadesDAO"></property>
+	</bean>
+	
+	<bean id="consultarActividadesCtl" class="com.proint1.udea.actividad.ctl.ConsultarActividadesCtl" scope="prototype">
+		<property name="reportesActividadesInt" ref="reportesActividadesInt"></property>
+	</bean>
 	
 	
 </beans>	
