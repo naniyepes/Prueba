@@ -3,6 +3,8 @@
  */
 package com.proint1.udea.administracion.ngc;
 
+import java.io.Serializable;
+
 import com.proint1.udea.administracion.dao.terceros.PersonaProyDAO;
 import com.proint1.udea.administracion.entidades.seguridad.Usuario;
 import com.proint1.udea.administracion.entidades.terceros.Docente;
@@ -12,8 +14,12 @@ import com.proint1.udea.administracion.entidades.terceros.Docente;
  * @author Juan Cardona
  * @since 22/06/2014
  */
-public class LoginNgc implements LoginIntDAO {
+public class LoginNgc implements LoginIntDAO,Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2431472832694715070L;
 	/**
 	 * Dao para persona
 	 */
