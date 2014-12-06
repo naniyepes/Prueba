@@ -1,0 +1,53 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?page title="Consulta e Informe de Actividades" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="lang" ?>
+<zk>
+<window title="Consulta e Informe de Actividades" border="normal" apply="${consultarActividadesCtl}">
+<div>
+	<grid>
+		<rows sclass="narrow">
+			<row>
+				<?label value="Semestre" /?>
+				<vbox>Semestre<combobox id="comboSemestre" autodrop="true" /></vbox>
+				<vbox>Pensum<combobox id="comboPensum" autodrop="true" /></vbox>
+			</row>
+			<row>
+				<vbox>Modalidad<combobox id="comboModalidad" autodrop="true" /></vbox>
+				<vbox>Curso<combobox id="comboCurso" autodrop="true" /></vbox>
+			</row>
+			<row>
+				<vbox>Grupo<combobox id="comboGrupo" autodrop="true" /></vbox>
+				<vbox>Fecha inicio<datebox id="dateBoxInicio" cols="12" format="yyyy/MM/dd" onCreate="self.value = new Date()" /></vbox>
+			</row>
+			<row>
+				<vbox>Fecha fin<datebox id="dateBoxFin" cols="12" format="yyyy/MM/dd" onCreate="self.value = new Date()" /></vbox>
+				<vbox>Tipo de actividad<combobox id="comboTipoActividad" autodrop="true" /></vbox>
+			</row>
+		</rows>
+	</grid>
+</div>
+<div align="center">
+	<button id="btnBuscar" label="Buscar" />
+	<button id="btnImprimir" label="Imprimir" />
+	<button id="btnDetalle" label="Detalle" />
+	<button id="btnPrueba" label="Prueba" />
+</div>
+<div>
+	<listbox id="listActividades" mold="paging" pageSize="10" rows="3">
+		<listhead>
+			<listheader label="Modalidad"/>
+			<listheader label="Pensum"/>
+			<listheader label="Semestre"/>
+			<listheader label="Materia"/>
+			<listheader label="Grupo"/>
+			<listheader label="Tipo Actividad"/>
+			<listheader label="Fecha"/>
+			<listheader label="Descripcion"/>
+		</listhead>
+	</listbox>
+</div>
+<div align="center">
+	<iframe id="frmReporte" width="600px" height="400px" />
+</div>
+</window>
+</zk>
