@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2014 10:29:54 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proint1.udea.administracion.TbAdmUsuarioxrol" table="TB_ADM_USUARIOXROL" schema="PROINT2">
+        <id name="nbUxrIdn" type="long">
+            <column name="NB_UXR_IDN" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbAdmRol" class="com.proint1.udea.administracion.TbAdmRol" fetch="select">
+            <column name="NB_ROL_IDN" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tbAdmUsuario" class="com.proint1.udea.administracion.TbAdmUsuario" fetch="select">
+            <column name="NB_USU_IDN" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

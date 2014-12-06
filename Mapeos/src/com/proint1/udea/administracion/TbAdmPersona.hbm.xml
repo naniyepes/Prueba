@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2014 10:29:54 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proint1.udea.administracion.TbAdmPersona" table="TB_ADM_PERSONA" schema="PROINT2">
+        <id name="nbPerIdn" type="long">
+            <column name="NB_PER_IDN" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbAdmTipoidentificacion" class="com.proint1.udea.administracion.TbAdmTipoidentificacion" fetch="select">
+            <column name="NB_TID_IDN" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="vrPerAdtusuario" type="string">
+            <column name="VR_PER_ADTUSUARIO" length="80" not-null="true" />
+        </property>
+        <property name="dtPerAdtfecha" type="date">
+            <column name="DT_PER_ADTFECHA" length="7" not-null="true" />
+        </property>
+        <property name="vrPerNombres" type="string">
+            <column name="VR_PER_NOMBRES" length="200" not-null="true" />
+        </property>
+        <property name="vrPerApellidos" type="string">
+            <column name="VR_PER_APELLIDOS" length="50" not-null="true" />
+        </property>
+        <property name="vrPerIdentificacion" type="string">
+            <column name="VR_PER_IDENTIFICACION" length="48" not-null="true" />
+        </property>
+        <property name="vrPerDireccion" type="string">
+            <column name="VR_PER_DIRECCION" length="80" />
+        </property>
+        <property name="vrPerTelefono" type="string">
+            <column name="VR_PER_TELEFONO" length="80" />
+        </property>
+        <property name="vrPerEmail" type="string">
+            <column name="VR_PER_EMAIL" length="240" />
+        </property>
+        <set name="tbAdmDocentes" table="TB_ADM_DOCENTE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_PER_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.administracion.TbAdmDocente" />
+        </set>
+        <set name="tbPrdAutors" table="TB_PRD_AUTOR" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_PER_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.produccion.TbPrdAutor" />
+        </set>
+        <set name="tbPrdGrupoinvestigacions" table="TB_PRD_GRUPOINVESTIGACION" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_DIRECTOR" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.produccion.TbPrdGrupoinvestigacion" />
+        </set>
+        <set name="tbAdmEstudiantes" table="TB_ADM_ESTUDIANTE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_PER_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.administracion.TbAdmEstudiante" />
+        </set>
+        <set name="tbPrdMiembrosxgrupos" table="TB_PRD_MIEMBROSXGRUPO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_PER_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.produccion.TbPrdMiembrosxgrupo" />
+        </set>
+        <set name="tbAdmUsuarios" table="TB_ADM_USUARIO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_PER_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.administracion.TbAdmUsuario" />
+        </set>
+    </class>
+</hibernate-mapping>

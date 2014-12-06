@@ -6,34 +6,37 @@ import java.util.List;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.proint1.udea.actividad.dao.DocenteGrupoDAO;
+import com.proint1.udea.actividad.entidades.DocenteGrupo;
 import com.proint1.udea.notificaciones.UdeAEmailSenderException;
 import com.proint1.udea.notificaciones.UdeaEmailService;
 
-
-
 /**
- * 
- * @author yo no fui
- *
+ * Job para notificar a todos los docentes
+ * @author Juan Cardona
+ * @since 05/12/2014
  */
 public class JobAlertasActividadesDocentesSinRegistrar implements Job {
 
+	
+	@Autowired
+	private DocenteGrupoDAO docenteGrupoDAO;
+	
 
 	public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-		System.out.println("¡Hola, mundo! :D");
-
+		System.out.println("¡Job, Notificación docentes! :D");
+		List<String> emailsTo = new ArrayList<>();
 		try {
-			List<String> emailsTo = new ArrayList<>();
-			emailsTo.add("danilomejia127@gmail.com");
-			emailsTo.add("jkcardona@gmail.com");
-			UdeaEmailService.sendEmail("Test Registro Actividades", "Mesanje de prueba", emailsTo, null, null, null);
+		List<DocenteGrupo> listaDocentes = docenteGrupoDAO.getDocenteGrupoList();
+		for (DocenteGrupo docenteGrupo : listaDocentes) {
+			emailsTo.add(docenteGrupo.getDocente().getEmail());
+		}
+			UdeaEmailService.sendEmail("Registro de Actividades", "Recordatorio registro de actividades", emailsTo, null, null, null);
 		} catch (UdeAEmailSenderException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-
 	}
 
 }

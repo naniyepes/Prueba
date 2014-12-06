@@ -79,6 +79,59 @@
 							   <value>com/proint1/udea/actividad/mapeo/TipoActividad.hbm.xml</value>
 							   <value>com/proint1/udea/actividad/mapeo/ReporteActividad.hbm.xml</value>
 							   <value>com/proint1/udea/actividad/mapeo/DocenteGrupo.hbm.xml</value>
+							   
+							 <value>com/proint1/udea/administracion/TbAdmCurso.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmDependenciaAcademica.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmDocente.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmDocentesxdependencia.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmEstadoSemestre.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmEstudiante.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmGrupo.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmMatricula.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmModalidadCurso.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmPaises.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmPermisosxrol.hbm.xml</value>
+                             
+                             <value>com/proint1/udea/administracion/TbAdmPersona.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmPropiedades.hbm.xml</value>
+                             
+                             <value>com/proint1/udea/administracion/TbAdmRecurso.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmRol.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmSemestre.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmSemestrexcurso.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmTareasProgramadas.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmTipoDependencia.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmTipoidentificacion.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmUnidadAcademica.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmUniversidades.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmUsuario.hbm.xml</value>
+                             <value>com/proint1/udea/administracion/TbAdmUsuarioxrol.hbm.xml</value>
+							 <!-- Mapeos microcurriculo --> 
+							 <value>com/proint1/udea/microcurriculo/TbMicActa.hbm.xml</value>
+							 <value>com/proint1/udea/microcurriculo/TbMicCursosxpensum.hbm.xml</value>
+							 <value>com/proint1/udea/microcurriculo/TbMicEstadomic.hbm.xml</value>
+							 <value>com/proint1/udea/microcurriculo/TbMicEvaluacion.hbm.xml</value>
+							 <value>com/proint1/udea/microcurriculo/TbMicMicrocurriculo.hbm.xml</value>
+							 <value>com/proint1/udea/microcurriculo/TbMicNucleoacademico.hbm.xml</value>
+							 <value>com/proint1/udea/microcurriculo/TbMicUnidades.hbm.xml</value>
+							 <value>com/proint1/udea/microcurriculo/TbMicVersionpensum.hbm.xml</value>
+							  <!-- Mapeos produccion academica -->
+							  <value>com/proint1/udea/produccion/TbPrdAutor.hbm.xml</value>
+							  <value>com/proint1/udea/produccion/TbPrdAutoresxproduccion.hbm.xml</value>
+                              <value>com/proint1/udea/produccion/TbPrdCampos.hbm.xml</value>
+                              <value>com/proint1/udea/produccion/TbPrdDetalleproduciones.hbm.xml</value>
+                              <value>com/proint1/udea/produccion/TbPrdGrupoinvestigacion.hbm.xml</value>
+                              <value>com/proint1/udea/produccion/TbPrdMiembrosxgrupo.hbm.xml</value>
+                              <value>com/proint1/udea/produccion/TbPrdProduccion.hbm.xml</value>
+                              <value>com/proint1/udea/produccion/TbPrdTipoproduccion.hbm.xml</value>
+                              <value>com/proint1/udea/produccion/TbPrdTipoproducionesxcampo.hbm.xml</value>
+							  
+							   <!-- Mapeos registro actividad -->
+							   <value>com/proint1/udea/actividad/TbActDocentexgrupo.hbm.xml</value>
+							   <value>com/proint1/udea/actividad/TbActReporteactividad.hbm.xml</value>
+							   <value>com/proint1/udea/actividad/TbActTipoActividad.hbm.xml</value>
+							   
+							   <value>com/proint1/udea/actividad/TbActReporteDcteGralTemp.hbm.xml</value>
                         </list>
                 </property>
                                                
