@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 8/11/2014 05:44:57 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proint1.udea.actividad.TbActReporteDcteGralTemp" table="TB_ACT_REPORTE_DCTE_GRAL_TEMP" schema="PROINT2">
+        <id name="nbKey" type="int">
+            <column name="NB_KEY" precision="10" scale="0" />
+            <generator class="increment" />
+        </id>
+        <property name="vrMcuDescripcion" type="string">
+            <column name="VR_MCU_DESCRIPCION" length="50" />
+        </property>
+        <property name="nbVpeIdn" type="java.lang.Long">
+            <column name="NB_VPE_IDN" precision="10" scale="0" />
+        </property>
+        <property name="nbSemAgno" type="java.lang.Short">
+            <column name="NB_SEM_AGNO" precision="4" scale="0" />
+        </property>
+        <property name="nbSemPeriodo" type="java.lang.Byte">
+            <column name="NB_SEM_PERIODO" precision="2" scale="0" />
+        </property>
+        <property name="vrCurNombre" type="string">
+            <column name="VR_CUR_NOMBRE" length="50" />
+        </property>
+        <property name="vrGpoNumero" type="string">
+            <column name="VR_GPO_NUMERO" length="12" />
+        </property>
+        <property name="vrTacNombre" type="string">
+            <column name="VR_TAC_NOMBRE" length="100" />
+        </property>
+        <property name="dtAdtfecha" type="date">
+            <column name="DT_ADTFECHA" length="7" />
+        </property>
+        <property name="vrPerNombres" type="string">
+            <column name="VR_PER_NOMBRES" length="200" />
+        </property>
+        <property name="vrPerApellidos" type="string">
+            <column name="VR_PER_APELLIDOS" length="50" />
+        </property>
+    </class>
+	
+	<sql-query name="FN_DATOS_REPORTE_DOCENTE" callable="true">
+	    <return alias="DATOS" class="com.proint1.udea.actividad.TbActReporteDcteGralTemp">
+	    	<return-property name="nbKey" column="NB_KEY"/>
+	        <return-property name="vrMcuDescripcion" column="VR_MCU_DESCRIPCION"/>
+	        <return-property name="nbVpeIdn" column="NB_VPE_IDN"/>
+	        <return-property name="nbSemAgno" column="NB_SEM_AGNO"/>
+	        <return-property name="nbSemPeriodo" column="NB_SEM_PERIODO"/>
+			<return-property name="vrCurNombre" column="VR_CUR_NOMBRE"/>
+			<return-property name="vrGpoNumero" column="VR_GPO_NUMERO"/>
+			<return-property name="vrTacNombre" column="VR_TAC_NOMBRE"/>
+			<return-property name="dtAdtfecha" column="DT_ADTFECHA"/>
+			<return-property name="vrPerNombres" column="VR_PER_NOMBRES"/>
+			<return-property name="vrPerApellidos" column="VR_PER_APELLIDOS"/>
+	    </return>
+	    { ? = call DATOS_REPORTE_DOCENTE(:P_AGNO,:P_PERIODO,:P_CURSO,:P_GRUPO,:P_PENSUM,:P_MODALIDAD,:P_FECHA,:P_TIPO_ACTIVIDAD) }
+	</sql-query>
+</hibernate-mapping>
