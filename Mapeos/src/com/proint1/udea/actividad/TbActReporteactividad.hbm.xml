@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2014 10:29:54 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proint1.udea.actividad.TbActReporteactividad" table="TB_ACT_REPORTEACTIVIDAD" schema="PROINT2">
+        <id name="nbRacIdn" type="long">
+            <column name="NB_RAC_IDN" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbActDocentexgrupo" class="com.proint1.udea.actividad.TbActDocentexgrupo" fetch="select">
+            <column name="NB_DOG_IDN" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tbActTipoActividad" class="com.proint1.udea.actividad.TbActTipoActividad" fetch="select">
+            <column name="NB_TAC_IDN" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="dtRacFecha" type="date">
+            <column name="DT_RAC_FECHA" length="7" not-null="true" />
+        </property>
+        <property name="vrRacDescripcion" type="string">
+            <column name="VR_RAC_DESCRIPCION" length="500" />
+        </property>
+        <property name="nbRacTiempo" type="big_decimal">
+            <column name="NB_RAC_TIEMPO" precision="14" scale="4" not-null="true" />
+        </property>
+        <property name="vrAdtusuario" type="string">
+            <column name="VR_ADTUSUARIO" length="32" />
+        </property>
+        <property name="dtAdtfecha" type="date">
+            <column name="DT_ADTFECHA" length="7" />
+        </property>
+    </class>
+</hibernate-mapping>

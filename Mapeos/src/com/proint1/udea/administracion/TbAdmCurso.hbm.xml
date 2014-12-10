@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2014 10:29:54 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proint1.udea.administracion.TbAdmCurso" table="TB_ADM_CURSO" schema="PROINT2">
+        <id name="nbCurIdn" type="long">
+            <column name="NB_CUR_IDN" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbAdmDependenciaAcademica" class="com.proint1.udea.administracion.TbAdmDependenciaAcademica" fetch="select">
+            <column name="BN_DEP_IDN" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="vrCurId" type="string">
+            <column name="VR_CUR_ID" length="10" not-null="true" />
+        </property>
+        <property name="vrCurNombre" type="string">
+            <column name="VR_CUR_NOMBRE" length="50" not-null="true" />
+        </property>
+        <property name="vrAdtusuario" type="string">
+            <column name="VR_ADTUSUARIO" length="32" />
+        </property>
+        <property name="dtAdtfecha" type="date">
+            <column name="DT_ADTFECHA" length="7" />
+        </property>
+        <set name="tbMicCursosxpensums" table="TB_MIC_CURSOSXPENSUM" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_CUR_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.microcurriculo.TbMicCursosxpensum" />
+        </set>
+        <set name="tbAdmSemestrexcursos" table="TB_ADM_SEMESTREXCURSO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_CUR_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.administracion.TbAdmSemestrexcurso" />
+        </set>
+    </class>
+    
+    <sql-query name="FN_FILTRO_MATERIAS_X_SEMESTRE" callable="true">
+	    <return alias="DATOS" class="com.proint1.udea.administracion.TbAdmCurso">
+	    	<return-property name="nbCurIdn" column="NB_CUR_IDN"/>
+	    	<return-property name="vrCurNombre" column="VR_CUR_NOMBRE"/>
+	    </return>
+	    { ? = call FILTRO_MATERIAS_X_SEMESTRE(:P_AGNO,:P_PERIODO) }
+	</sql-query>
+</hibernate-mapping>

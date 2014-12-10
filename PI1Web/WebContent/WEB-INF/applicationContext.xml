@@ -31,8 +31,7 @@
         <bean id="factory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
                 <property name="mappingResources">
                         <list>     
-                           <!-- Mapeos administración -->                       
-                            <value>com/proint1/udea/administracion/PersonaEjemplo.hbm.xml</value> 
+                                                     <!-- Mapeos administración -->                       
                             <!-- Terceros -->
                              <value>com/proint1/udea/administracion/mapeo/terceros/Persona.hbm.xml</value>
                              <value>com/proint1/udea/administracion/mapeo/terceros/Tipoidentificacion.hbm.xml</value>

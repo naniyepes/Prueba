@@ -29,7 +29,7 @@ public class AdministrarCursosNgc implements CursoOperacionesIntDAO,Serializable
 	
 	
 
-	private static Logger logger=Logger.getLogger(PersonaNgc.class);
+	private static Logger logger=Logger.getLogger(AdministrarCursosNgc.class);
 	
 	@Override
 	public List<CursoDTO> getCursoList() {

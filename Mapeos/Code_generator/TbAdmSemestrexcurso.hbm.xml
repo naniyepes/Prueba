@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2014 10:29:54 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proint1.udea.administracion.TbAdmSemestrexcurso" table="TB_ADM_SEMESTREXCURSO" schema="PROINT2">
+        <id name="nbScuIdn" type="long">
+            <column name="NB_SCU_IDN" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbAdmSemestre" class="com.proint1.udea.administracion.TbAdmSemestre" fetch="select">
+            <column name="NB_SEM_IDN" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tbAdmGrupo" class="com.proint1.udea.administracion.TbAdmGrupo" fetch="select">
+            <column name="NB_GRU_IDN" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tbAdmCurso" class="com.proint1.udea.administracion.TbAdmCurso" fetch="select">
+            <column name="NB_CUR_IDN" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tbAdmModalidadCurso" class="com.proint1.udea.administracion.TbAdmModalidadCurso" fetch="select">
+            <column name="NB_MCU_IDN" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <set name="tbMicMicrocurriculos" table="TB_MIC_MICROCURRICULO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_SCU_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.microcurriculo.TbMicMicrocurriculo" />
+        </set>
+    </class>
+</hibernate-mapping>

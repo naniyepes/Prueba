@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2014 10:29:54 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proint1.udea.administracion.TbAdmDependenciaAcademica" table="TB_ADM_DEPENDENCIA_ACADEMICA" schema="PROINT2">
+        <id name="nbDepIdn" type="long">
+            <column name="NB_DEP_IDN" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbAdmTipoDependencia" class="com.proint1.udea.administracion.TbAdmTipoDependencia" fetch="select">
+            <column name="VR_TDP_CODIGO" length="4" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tbAdmUnidadAcademica" class="com.proint1.udea.administracion.TbAdmUnidadAcademica" fetch="select">
+            <column name="NB_UNI_IDN" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tbAdmDependenciaAcademica" class="com.proint1.udea.administracion.TbAdmDependenciaAcademica" fetch="select">
+            <column name="NB_DEPPADRE_IDN" precision="10" scale="0" />
+        </many-to-one>
+        <property name="vrDepNombre" type="string">
+            <column name="VR_DEP_NOMBRE" length="100" not-null="true" />
+        </property>
+        <set name="tbAdmDocentesxdependencias" table="TB_ADM_DOCENTESXDEPENDENCIA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_DEP_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.administracion.TbAdmDocentesxdependencia" />
+        </set>
+        <set name="tbAdmPropiedadeses" table="TB_ADM_PROPIEDADES" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_DEP_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.administracion.TbAdmPropiedades" />
+        </set>
+        <set name="tbAdmDependenciaAcademicas" table="TB_ADM_DEPENDENCIA_ACADEMICA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_DEPPADRE_IDN" precision="10" scale="0" />
+            </key>
+            <one-to-many class="com.proint1.udea.administracion.TbAdmDependenciaAcademica" />
+        </set>
+        <set name="tbAdmTareasProgramadases" table="TB_ADM_TAREAS_PROGRAMADAS" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_DEP_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.administracion.TbAdmTareasProgramadas" />
+        </set>
+        <set name="tbAdmCursos" table="TB_ADM_CURSO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="BN_DEP_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.administracion.TbAdmCurso" />
+        </set>
+        <set name="tbAdmMatriculas" table="TB_ADM_MATRICULA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_DEP_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.administracion.TbAdmMatricula" />
+        </set>
+        <set name="tbAdmSemestres" table="TB_ADM_SEMESTRE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_DEP_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.administracion.TbAdmSemestre" />
+        </set>
+    </class>
+</hibernate-mapping>

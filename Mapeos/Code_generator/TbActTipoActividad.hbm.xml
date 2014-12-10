@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2014 10:29:54 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proint1.udea.administracion.TbActTipoActividad" table="TB_ACT_TIPO_ACTIVIDAD" schema="PROINT2">
+        <id name="nbTacIdn" type="long">
+            <column name="NB_TAC_IDN" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="vrTacNombre" type="string">
+            <column name="VR_TAC_NOMBRE" length="50" not-null="true" />
+        </property>
+        <property name="vrTacDescripcion" type="string">
+            <column name="VR_TAC_DESCRIPCION" not-null="true" />
+        </property>
+        <set name="tbActReporteactividads" table="TB_ACT_REPORTEACTIVIDAD" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_TAC_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.administracion.TbActReporteactividad" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -11,6 +11,10 @@
   <param-name>log4jConfigLocation</param-name>
   <param-value>/WEB-INF/log4j.xml</param-value>
  </context-param>
+  <context-param>
+        <param-name>maxevents</param-name>
+        <param-value>1000</param-value>
+ </context-param>
  <listener>
   <description>Used to cleanup when a session is destroyed</description>
   <display-name>ZK Session cleaner</display-name>

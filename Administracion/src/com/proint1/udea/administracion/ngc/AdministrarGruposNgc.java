@@ -27,7 +27,7 @@ public class AdministrarGruposNgc implements GrupoOperacionesIntDAO,Serializable
 	GrupoOperacionesDAO grupoOperacionesDAO;	
 	
 	
-	private static Logger logger=Logger.getLogger(PersonaNgc.class);
+	private static Logger logger=Logger.getLogger(AdministrarGruposNgc.class);
 	
 	@Override
 	public List<GrupoDTO> getGrupoList() {

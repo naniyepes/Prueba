@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2014 10:29:54 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proint1.udea.actividad.TbActDocentexgrupo" table="TB_ACT_DOCENTEXGRUPO" schema="PROINT2">
+        <id name="nbDogIdn" type="long">
+            <column name="NB_DOG_IDN" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbAdmDocente" class="com.proint1.udea.administracion.TbAdmDocente" fetch="select">
+            <column name="NB_DOC_IDN" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tbAdmGrupo" class="com.proint1.udea.administracion.TbAdmGrupo" fetch="select">
+            <column name="NB_GPO_IDN" precision="10" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="nbDogTiempototal" type="big_decimal">
+            <column name="NB_DOG_TIEMPOTOTAL" precision="14" scale="4" />
+        </property>
+        <property name="vrAdtusuario" type="string">
+            <column name="VR_ADTUSUARIO" length="32" />
+        </property>
+        <property name="dtAdtfecha" type="date">
+            <column name="DT_ADTFECHA" length="7" />
+        </property>
+        <set name="tbActReporteactividads" table="TB_ACT_REPORTEACTIVIDAD" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_DOG_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.actividad.TbActReporteactividad" />
+        </set>
+    </class>
+</hibernate-mapping>

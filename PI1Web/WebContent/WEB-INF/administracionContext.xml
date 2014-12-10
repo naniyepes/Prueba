@@ -10,10 +10,6 @@
 
 <!-- BEANS DE ACCESO A DATOS, DAO -->
 <!--  -->
-    <bean id="personaDAO" class="com.proint1.udea.administracion.dao.PersonaDAO">
-		<property name="sessionFactory"> <ref bean="factory"  /></property>
-	</bean>
-	
 	<!-- DAO de persistencia para la entida PErsona del Proyecto no del ejemplo -->	
 	<bean id="personaProyDAO" class="com.proint1.udea.administracion.dao.terceros.PersonaProyDAO">
 	   <property name="sessionFactory"> <ref bean="factory"  /></property>
@@ -66,10 +62,6 @@
   
     <!-- BEANS DE NEGOCIO -->	
 
-    <bean id="personaInt" class="com.proint1.udea.administracion.ngc.PersonaNgc">
-	    <property name="personaDAO" ref="personaDAO"></property>
-	</bean>
-	
 	<bean id="cursoOpInt" class="com.proint1.udea.administracion.ngc.AdministrarCursosNgc">
 	    <property name="cursoOperacionesDAO" ref="cursoOperacionesDAO"></property>
 	</bean>

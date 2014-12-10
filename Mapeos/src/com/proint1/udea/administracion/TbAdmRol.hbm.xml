@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2014 10:29:54 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proint1.udea.administracion.TbAdmRol" table="TB_ADM_ROL" schema="PROINT2">
+        <id name="nbRolIdn" type="big_decimal">
+            <column name="NB_ROL_IDN" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="vrRolNombre" type="string">
+            <column name="VR_ROL_NOMBRE" length="200" not-null="true" />
+        </property>
+        <set name="tbAdmPermisosxrols" table="TB_ADM_PERMISOSXROL" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_ROL_IDN" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.administracion.TbAdmPermisosxrol" />
+        </set>
+        <set name="tbAdmUsuarioxrols" table="TB_ADM_USUARIOXROL" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_ROL_IDN" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.administracion.TbAdmUsuarioxrol" />
+        </set>
+    </class>
+</hibernate-mapping>

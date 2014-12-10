@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 24/11/2014 10:29:54 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.proint1.udea.administracion.TbAdmTipoidentificacion" table="TB_ADM_TIPOIDENTIFICACION" schema="PROINT2">
+        <id name="nbIdn" type="long">
+            <column name="NB_IDN" precision="10" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="dtAdtfecha" type="date">
+            <column name="DT_ADTFECHA" length="7" not-null="true" />
+        </property>
+        <property name="vrAdtusuario" type="string">
+            <column name="VR_ADTUSUARIO" length="40" not-null="true" />
+        </property>
+        <property name="vrDescripcion" type="string">
+            <column name="VR_DESCRIPCION" length="100" not-null="true" />
+        </property>
+        <set name="tbAdmPersonas" table="TB_ADM_PERSONA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NB_TID_IDN" precision="10" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.proint1.udea.administracion.TbAdmPersona" />
+        </set>
+    </class>
+</hibernate-mapping>
