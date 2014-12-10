@@ -12,6 +12,8 @@
 <bean id="docenteGrupoDao"     class="com.proint1.udea.actividad.dao.DocenteGrupoDAO">    <property name="sessionFactory" ref="factory"/> </bean>
 <bean id="reporteActividadDAO"     class="com.proint1.udea.actividad.dao.ReporteActividadDAO">    <property name="sessionFactory" ref="factory"/> </bean>
 
+
+
 <bean id="operacionesSumaryGruposDAO"     class="com.proint1.udea.actividad.dao.OperacionesSumaryGruposDAO"> 
   <property name="sessionFactory" ref="factory"/>
   <property name="reporteActividadDAO" ref="reporteActividadDAO"></property>
@@ -19,6 +21,11 @@
 
 <bean id="docGrupoOperacionesDAO" class="com.proint1.udea.actividad.dao.DocGrupoOperacionesDAO">
 	   <property name="sessionFactory"> <ref bean="factory"  /></property>
+</bean>
+
+<bean id="reportePersonalDAO" class="com.proint1.udea.actividad.dao.ReportePersonalDAO">
+<property name="sessionFactory"  >  <ref   bean="factory" /></property>
+
 </bean>
 
 
@@ -37,9 +44,16 @@
 	    <property name="docGrupoOperacionesDAO" ref="docGrupoOperacionesDAO"></property>
 	</bean>
 	
+	
+	
 	<bean id="tipoActOpInt" class="com.proint1.udea.actividad.ngc.AdministrarTipoActividadNgc">
 	    <property name="tipoActividadDao" ref="tipoActividadDao"></property>
 	</bean>
+	
+	<bean id="reportePersonalInt" class="com.proint1.udea.actividad.ngc.ReportePersonalNgc" scope="prototype"> 
+ 			<property name="reportePersonalDAO" ref="reportePersonalDAO"></property>     
+	</bean>
+	
 		
     <!-- BEANS PARA LOS CONTROLADORES -->		
 	<bean id="sumaryGrupoCtl" class="com.proint1.udea.actividad.ctl.SumaryGrupoCtl" scope="prototype"> 
@@ -52,6 +66,11 @@
 	
 	<bean id="administrarActividadCtl" class="com.proint1.udea.actividad.ctl.AdminsitrarActividadCtl" scope="prototype"> 
  		<property name="operacionesInt" ref="actDocenteGrupoInt"></property>    
+	</bean>
+	
+	<bean id="administrarReporteCtl" class="com.proint1.udea.actividad.ctl.AdministrarReporteCtl" scope="prototype"> 
+		<property name="actDocenteGrupoInt" ref="actDocenteGrupoInt"></property> 
+		<property name="reportePersonalInt" ref="reportePersonalInt"></property>    
 	</bean>
 	
 	<bean id="administrarDocGruposCtl" class="com.proint1.udea.actividad.ctl.AdministrarDocGruposCtl" scope="prototype"> 

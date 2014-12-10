@@ -22,6 +22,7 @@
 		</div>
 		<toolbar>
 			<toolbarbutton id="btnCrear" label="Crear" image="/img/agregar.ico"></toolbarbutton>
+			<toolbarbutton id="btnReporte" label="GenerarReporte" image="/img/agregar.ico"></toolbarbutton>
 		</toolbar>
 
 		<listbox id="lsxActividades" mold="paging" pageSize="10" emptyMessage="No hay actividades registradas">

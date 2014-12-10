@@ -1,0 +1,33 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Administrar Reportes" border="normal" width="1000px" apply="${administrarReporteCtl}" maximizable="true" mode="overlapped" closable="true">
+		<div align="center">
+			<borderlayout>
+				<north></north>
+				<center>
+					<div align="center">
+						<hlayout spacing="20" valign="middle" height="50">
+							<label value="Usuario" width="150px" />
+							<textbox  id="usuarioTextBox" type="text" width="150px" tabindex="1"></textbox>
+						</hlayout>
+						<hlayout>
+							<label value="Contraseña" width="150px" />
+							<textbox id="passwordTextBox" type="password" width="150px" tabindex="2"></textbox>
+						</hlayout>
+					</div>
+				</center>
+				<south></south>
+			</borderlayout>
+		</div>
+		<toolbar>
+			<vbox>Reporte<combobox id="comboReporte" autodrop="true" /></vbox>
+			
+		</toolbar>
+
+		                   
+	      <iframe id="frmReporte" width="600px" height="400px" />
+       		
+
+	</window>
+</zk>

@@ -168,6 +168,20 @@ public class ActDocenteGrupoCtl extends GenericForwardComposer implements Listit
 		}
 	}
 	
+	public void onClick$btnReporte(Event ev) {	
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put("dtoSumaryGrupos", sumaryGruposDto);			
+		java.io.InputStream zulInput = this.getClass().getClassLoader().getResourceAsStream("com/proint1/udea/actividad/vista/AdministrarReporte.zul") ;
+		java.io.Reader zulReader = new java.io.InputStreamReader(zulInput);
+		try {
+			Component c = Executions.createComponentsDirectly(zulReader,"zul",null,params) ;
+			Window win = (Window)c;
+			win.doModal();
+			definirModelo();
+		} catch (IOException e) {
+			logger.error("ERROR",e);
+		}
+	}
 
 	public OperacionesSumaryGruposInterfaceDAO getActDocenteGrupoInt() {
 		return actDocenteGrupoInt;
